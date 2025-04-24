@@ -89,7 +89,7 @@ class RelatorioController extends Controller
         $site = $request->input('site');
         $equipamento = $request->input('equipamento');
 
-        $query = Relatorio::query()->where('site', session('usuario.site'))->limit(200);
+        $query = Relatorio::query()->limit(200);
 
         if ($data_inicio && $data_final) {
             $data_inicio .= ' 00:00:00';

@@ -96,7 +96,7 @@ class RelatorioPermanenteController extends Controller
         $equipamento = $request->input('equipamento');
         $colaborador = $request->input('colaborador');
 
-        $query = RelatorioPermanente::query()->where('site', session('usuario.site'))->limit(200);
+        $query = RelatorioPermanente::query()->limit(200);
         if ($site) {
             $query->where('site', $site);
         }
