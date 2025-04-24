@@ -1,0 +1,10 @@
+@media screen and (width < 640px) {
+    
+    #login-form {
+        width: 95% !important;
+    }
+    .cabecalho {
+        display: none;
+    }
+
+}

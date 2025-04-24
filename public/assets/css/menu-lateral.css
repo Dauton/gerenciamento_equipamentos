@@ -1,0 +1,93 @@
+.menu-lateral {
+    width: 230px;
+    height: 100%;
+    margin: 0 10px 0 0;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 0 5px 5px 0;
+    box-shadow: 0 0 .3em #cdcdcd;
+    background: var(--secondary-color);
+    overflow: scroll;
+}
+
+.menu-lateral .usuario-info {
+    width: 100%;
+    margin: 0 0 30px 0;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    background: #fff;
+    border-radius: 3px;
+    font-size: 10px;
+    text-align: center;
+}
+
+.menu-lateral .usuario-info i {
+    margin-bottom: 10px;
+    font-size: 50px;
+    color: var(--tertiary-color);
+}
+.menu-lateral .usuario-info p {
+    font-size: 13px;
+}
+.menu-lateral ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.menu-lateral ul li a {
+    padding: 12px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    border-radius: 3px;
+    font-size: 12px;
+    text-decoration: none;
+    color: #f1f1f1;
+    cursor: pointer;
+}
+
+.menu-lateral ul li a:hover {
+    background: var(--tertiary-color);
+    color: #fff;
+}
+
+.menu-lateral ul li a i {
+    font-size: 14px;
+}
+
+.menu-lateral .bottom-menu {
+    width: 100%;
+    margin-top: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    flex-direction: column;
+}
+.menu-lateral .bottom-menu img {
+    width: 100px;
+}
+.menu-lateral .bottom-menu p {
+    width: fit-content;
+    padding: 5px 10px;
+    border-radius: 2px;
+    background: var(--tertiary-color);
+    color: #f1f1f1;
+    font-size: 12px;
+    text-align: center;
+}
+
+.menu-lateral ol {
+    list-style: none;
+    display: none;
+    background: var(--tertiary-color);
+    border-radius: 3px;
+}
+.menu-lateral ol li a:hover {
+    background: var(--quaternary-color);
+}

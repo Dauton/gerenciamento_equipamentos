@@ -1,0 +1,75 @@
+form {
+    width: 100%;
+    padding: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 2%;
+    position: relative;
+    box-shadow: 0 0 .3em #cdcdcd;
+    border-radius: 5px;
+}
+form h5 {
+    width: 100%;
+    margin: 0 0 10px 0;
+    font-weight: 100;
+}
+form label {
+    width: 49%;
+    display: flex;
+    flex-direction: column;
+    font-size: 12px;
+}
+form label span {
+    color: #f00;
+}
+form label div {
+    width: 100%;
+    height: 100%;
+    margin: 3px 0 0 0;
+    height: fit-content;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 3px;
+}
+form label div input,
+form label div select {
+    width: 100%;
+    height: 100% !important;
+    padding: 10px;
+    border: 1px solid #a7a7a7 !important;
+    border-radius: 0 3px 3px 0;
+    font-size: 12px;
+    background: #fff;
+}
+form label div input:focus,
+form label div select:focus {
+    outline: none;
+}
+form label div i {
+    min-width: 40px;
+    height: 100%;
+    padding: 12px;
+    border-radius: 3px 0 0 3px;
+    font-size: 13px;
+    color: #f1f1f1;
+    text-align: center;
+    background: var(--secondary-color);
+}
+.select2-selection {
+    height: 100% !important;
+    padding: 4px !important;
+    border-radius: 0 3px 3px 0 !important;
+}
+.select2-results__option {
+    font-size: 12px;
+}
+.select2-container {
+    width: 100% !important;
+}
+
+form label div input::-webkit-file-upload-button {
+    background: #fff;
+    border: none;
+    cursor: pointer;
+}

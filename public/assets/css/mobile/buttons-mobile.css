@@ -1,0 +1,9 @@
+@media screen and (width < 640px) {
+
+    #btn-menu {
+        color: var(--quaternary-color);
+        font-size: 30px;
+        z-index: 5;
+    }
+    
+}

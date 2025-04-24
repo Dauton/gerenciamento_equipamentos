@@ -1,0 +1,136 @@
+.table-container {
+    width: 100%;
+    padding: 30px;
+    position: relative;
+    box-shadow: 0 0 .3em #cdcdcd;
+    border-radius: 5px;
+}
+
+.table-container h1 {
+    margin: 0 0 30px 0;
+}
+
+table {
+    width: 100%;
+    margin: 10px 0 !important;
+    border-collapse: collapse;
+    border: none !important;
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+table thead th {
+    background: var(--secondary-color);
+    color: white;
+}
+
+table tbody tr:hover {
+    background: #cdcdcd !important;
+}
+
+table tr td,
+table tr th {
+    padding: 12px !important;
+    font-size: 12px;
+    text-align: center !important;
+}
+
+table tr td {
+    color: #505050;
+    font-size: 10px !important;
+}
+
+table tr:nth-child(even) {
+    background: #f1f1f1 !important;
+}
+
+table i {
+    font-size: 17px;
+}
+table #table-icon-green {
+    color: #217346;
+}
+
+table #table-icon-blue {
+    color: var(--secondary-color);
+}
+
+
+.dataTables_length {
+    padding: 8px !important;
+    font-size: 12px !important;
+}
+
+.dataTables_length select {
+    padding: 0 !important;
+    font-size: 12px !important;
+}
+
+.dataTables_filter {
+    margin: 0 0 10px 0 !important;
+    display: flex;
+    flex-direction: column;
+    font-size: 12px !important;
+}
+
+.dataTables_filter input:focus {
+    outline-color: var(--secondary-color);
+}
+
+/* Área de paginação */
+.dataTables_wrapper .dataTables_paginate {
+    text-align: center;
+    color: #fff !important;
+}
+
+/* Botões padrão */
+.dataTables_wrapper .dataTables_paginate .paginate_button {
+    background-color: var(--secondary-color) !important;
+    color: white !important;
+    border: none;
+    padding: 5px 10px;
+    border: none !important;
+    font-size: 13px;
+    cursor: pointer;
+}
+
+/* Hover */
+.dataTables_wrapper .dataTables_paginate .paginate_button:hover {
+    border: none !important;
+    background: var(--tertiary-color) !important;
+}
+
+/* Botão ativo */
+.dataTables_wrapper .dataTables_paginate .paginate_button.current {
+    background-color: var(--tertiary-color) !important;
+    color: white !important;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button.current:hover {
+    background-color: var(--quaternary-color) !important;
+}
+
+#DataTables_Table_0_previous,
+#DataTables_Table_0_next {
+    color: #fff !important;
+}
+
+.dataTables_info {
+    font-size: 13px;
+    color: #606060;
+    font-style: italic;
+}
+
+
+/* BOTÃO EXCEL DadaTables */
+.dt-buttons {
+    padding: 0 !important;
+}
+
+.dt-button {
+    min-width: 35px !important;
+    height: fit-content !important;
+    padding: 6px 6px 0 6px !important;
+    background: #217346 !important;
+    color: #fff !important;
+}

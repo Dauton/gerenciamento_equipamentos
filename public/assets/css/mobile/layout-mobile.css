@@ -1,0 +1,30 @@
+@import url(login-page-mobile.css);
+@import url(menu-lateral-mobile.css);
+@import url(form-mobile.css);
+@import url(table-mobile.css);
+@import url(buttons-mobile.css);
+
+@media screen and (width < 640px) {
+
+    .principal {
+        padding: 10px !important;
+        flex-direction: column;
+    }
+    .cabecalho-mobile {
+        width: 100%;
+        padding: 10px;
+        display: flex !important;
+        align-items: center;
+        justify-content: space-between;
+        box-shadow: 0 0 .3em #cdcdcd;
+        border-radius: 5px;
+        background: #fff;
+    }
+    .cabecalho-mobile img {
+        width: 50px;
+    }
+
+    .conteudo {
+        padding: 10px !important;
+    }
+}

@@ -1,0 +1,10 @@
+@media screen and (width < 640px) {
+
+    form {
+        padding: 20px;
+        flex-direction: column;
+    }
+    form label {
+        width: 100%;
+    }
+}

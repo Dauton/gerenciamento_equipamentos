@@ -1,0 +1,144 @@
+@extends('layouts.content')
+
+@section('content')
+    @include('layouts.menu-lateral')
+
+    <section class="centro">
+        <header class="cabecalho">
+            <h1 class="cabecalho-title"><a href="{{ route('homepage') }}">Homepage</a> / Relatórios</h1>
+            <i class="fa-solid fa-magnifying-glass"></i>
+        </header>
+        <article class="conteudo">
+
+            <form method="post" action="buscaRelatorio">
+                @csrf
+
+                <h1>Busca de relatório</h1>
+
+                <h5>Para obter todos os dados, deixe os campos em branco.</h5>
+
+                <label for="data_inicio">
+                    <p>De<span> *</span></p>
+                    <div>
+                        <i class="fa-solid fa-calendar-days"></i>
+                        <input type="date" name="data_inicio" id="data_inicio" value="{{ old('data_inicio') }}">
+                    </div>
+                    @error('data_inicio')
+                        <p id="input-error">{{ $message }}</p>
+                    @enderror
+                </label>
+
+                <label for="data_final">
+                    <p>Até<span> *</span></p>
+                    <div>
+                        <i class="fa-solid fa-calendar-days"></i>
+                        <input type="date" name="data_final" id="data_final" value="{{ old('data_final') }}">
+                    </div>
+                    @error('data_final')
+                        <p id="input-error">{{ $message }}</p>
+                    @enderror
+                </label>
+
+                <label for="site">
+                    <p>Site<span> *</span></p>
+                    <div>
+                        <i class="fa-solid fa-map-location-dot"></i>
+                        <select name="site" id="site" class="select2">
+                            <option value="">Selecione o site</option>
+                            @foreach ($sites as $site)
+                                <option value="{{ $site['usu_nomfil'] }}">{{ $site['usu_nomfil'] }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    @error('site')
+                        <p id="input-error">{{ $message }}</p>
+                    @enderror
+                </label>
+
+                <label for="equipamento">
+                    <p>Equipamento<span> *</span></p>
+                    <div>
+                        <i class="fa-solid fa-microchip"></i>
+                        <select name="equipamento" id="equipamento" class="select2">
+                            <option value="">Selecione o equipamento</option>
+                            @foreach ($equipamentos as $equipamento)
+                                <option value="{{ $equipamento->patrimonio }}">
+                                    {{ $equipamento->patrimonio . ' - ' . $equipamento->modelo }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    @error('equipamento')
+                        <p id="input-error">{{ $message }}</p>
+                    @enderror
+                </label>
+
+                <div class="container-buttons">
+                    <button type="submit">Buscar</button>
+                    <a href="{{ route('relatorios') }}"><button type="button" id="btn-cancelar">Resetar</button></a>
+                </div>
+            </form>
+            @if (count($relatorios) > 0)
+                <section class="table-container">
+
+                    <h1>Resultado da busca</h1>
+
+                    <table class="DataTableExcel">
+                        <thead>
+                            <tr>
+                                <th>Status</th>
+                                <th>Site</th>
+                                <th>Equipamento</th>
+                                <th>Entregue por</th>
+                                <th>Entregue em</th>
+                                <th>Para o colaborador</th>
+                                <th>Departamento</th>
+                                <th>Turno</th>
+                                <th>Confirmou devolução</th>
+                                <th>Devolvido em</th>
+                                <th>Houve avaria?</th>
+                                <th>Foto da avaria</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            @foreach ($relatorios as $exibe)
+                                <tr>
+                                    <td>
+                                        @if (!empty($exibe->agente_devolucao))
+                                            <i class="fa-solid fa-circle-check" id="table-icon-green"
+                                                title="Relatório concluído."></i>
+                                        @else
+                                            <i class="fa-solid fa-clock" id="table-icon-blue"
+                                                title="Relatório pendente de devolução."></i>
+                                        @endif
+                                    </td>
+                                    <td>{{ $exibe->site }}</td>
+                                    <td>{{ $exibe->equipamento }}</td>
+                                    <td>{{ $exibe->agente_entrega }}</td>
+                                    <td>{{ \Carbon\Carbon::parse($exibe->data_entrega)->format('d/m/Y - H:i') }}</td>
+                                    <td>{{ $exibe->colaborador }}</td>
+                                    <td>{{ $exibe->departamento }}</td>
+                                    <td>{{ $exibe->turno }}</td>
+                                    <td>{{ $exibe->agente_devolucao }}</td>
+                                    <td>{{ $exibe->data_devolucao ? \Carbon\Carbon::parse($exibe->data_devolucao)->format('d/m/Y - H:i') : '' }}
+                                    </td>
+                                    <td>{{ $exibe->avaria }}</td>
+                                    <td>
+                                        @if (!empty($exibe->foto_avaria))
+                                            <a href="{{ $exibe->foto_avaria }}" target="_blank"
+                                                title="Clique para abrir a foto">
+                                                <i class="fa-solid fa-image" id="btn-table-blue"></i>
+                                            </a>
+                                        @endif
+                                    </td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </section>
+            @endif
+        </article>
+        @include('layouts.rodape')
+    </section>
+
+@endsection

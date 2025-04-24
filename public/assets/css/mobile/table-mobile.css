@@ -1,0 +1,60 @@
+@media screen and (width < 640px) {
+
+    .table-container {
+        width: fit-content;
+    }
+
+    /* Área de paginação */
+    .dataTables_wrapper .dataTables_paginate {
+        display: flex;
+    }
+
+    /* Botões padrão */
+    .dataTables_wrapper .dataTables_paginate .paginate_button {
+        background-color: var(--secondary-color) !important;
+        color: white !important;
+        border: none;
+        padding: 5px 10px;
+        border: none !important;
+        font-size: 13px;
+        cursor: pointer;
+    }
+
+    /* Hover */
+    .dataTables_wrapper .dataTables_paginate .paginate_button:hover {
+        border: none !important;
+        background: var(--tertiary-color) !important;
+    }
+
+    /* Botão ativo */
+    .dataTables_wrapper .dataTables_paginate .paginate_button.current {
+        background-color: var(--tertiary-color) !important;
+        color: white !important;
+    }
+
+    .dataTables_wrapper .dataTables_paginate .paginate_button.current:hover {
+        background-color: var(--quaternary-color) !important;
+    }
+
+    #DataTables_Table_0_previous,
+    #DataTables_Table_0_next {
+        color: #fff !important;
+    }
+
+    .dataTables_info,
+    .dataTables_filter,
+    .dataTables_length {
+        display: flex;
+    }
+    .dataTables_filter label {
+        margin: 10px 0 0 0;
+        display: flex;
+        justify-content: left;
+        align-items: center;
+    }
+
+    /* BOTÃO EXCEL DadaTables */
+    .dt-buttons {
+        display: flex;
+    }
+}

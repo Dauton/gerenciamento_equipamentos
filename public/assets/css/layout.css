@@ -1,0 +1,117 @@
+@import url(menu-lateral.css);
+@import url(login-page.css);
+
+@import url(form.css);
+@import url(table.css);
+
+@import url(buttons.css);
+@import url(alerts.css);
+
+@import url(mobile/layout-mobile.css);
+
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+
+/* DISPLAY NONE */
+.cabecalho-mobile {
+    display: none ;
+}
+
+:root {
+    --primary-color: #0088ff;
+    --secondary-color: #005876;
+    --tertiary-color: #00384b;
+    --quaternary-color: #00222e;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+*::-webkit-scrollbar {
+    display: none;
+}
+
+body {
+    font-family: "Ubuntu", sans-serif;
+}
+
+h1 {
+    width: 100%;
+    margin: 0 0 10px 0;
+    font-size: 20px;
+    font-weight: 100;
+    color: #404040;
+}
+
+.principal {
+    width: 100%;
+    height: 100%;
+    padding: 10px 10px 10px 0;
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px 0;
+    background: #f1f1f1;
+}
+.centro {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    border-radius: 5px;
+    box-shadow: 0 0 .3em #cdcdcd;
+    overflow: hidden;
+}
+
+.cabecalho {
+    width: 100%;
+    height: fit-content;
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: linear-gradient(to right, var(--secondary-color), var(--quaternary-color));
+    color: #f1f1f1;
+}
+.cabecalho-title {
+    margin: 0;
+    font-weight: bold;
+    font-size: 15px;
+    color: #f1f1f1;
+}
+.cabecalho-title a {
+    color: #f1f1f1;
+    text-decoration: none;
+    font-weight: 100;
+    font-style: italic;
+}
+.cabecalho i {
+    font-size: 20px;
+}
+
+.conteudo {
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    background: #fff;
+    overflow: scroll;
+}
+.conteudo-title {
+    color: #404040;
+}
+
+.rodape {
+    width: 100%;
+    padding: 10px;
+    background: #fff;
+    color: #808080;
+    font-size: 12px;
+    text-align: center;
+    font-style: italic;
+}
