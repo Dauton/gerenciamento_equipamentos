@@ -21,8 +21,8 @@
                     @error('descricao')
                         <p id="input-error">{{ $message }}</p>
                         <style>
-                            #descricao {
-                                border: 1px solid #f00
+                            label[for='descricao'] i {
+                                background: #b90000
                             }
                         </style>
                     @enderror

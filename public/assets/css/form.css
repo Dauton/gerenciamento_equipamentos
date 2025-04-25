@@ -45,11 +45,12 @@ form label div select {
 form label div input:focus,
 form label div select:focus {
     outline: none;
+    background: #f1f1f1 !important;
 }
 form label div i {
     min-width: 40px;
     height: 100%;
-    padding: 12px;
+    padding: 13px;
     border-radius: 3px 0 0 3px;
     font-size: 13px;
     color: #f1f1f1;
@@ -58,8 +59,11 @@ form label div i {
 }
 .select2-selection {
     height: 100% !important;
-    padding: 4px !important;
+    padding: 5px !important;
     border-radius: 0 3px 3px 0 !important;
+}
+.select2-selection:hover {
+    background: #f1f1f1 !important;
 }
 .select2-results__option {
     font-size: 12px;

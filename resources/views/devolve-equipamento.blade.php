@@ -24,10 +24,14 @@
                         <option value="SIM">SIM</option>
                         <option value="NÃO">NÃO</option>
                     </select>
-
                 </div>
                 @error('ha_avaria')
                     <p id="input-error">{{ $message }}</p>
+                    <style>
+                        label[for='ha_avaria'] i {
+                            background: #b90000
+                        }
+                    </style>
                 @enderror
             </label>
             <label for="avaria" id="label_descricao_avaria">
@@ -43,6 +47,11 @@
                 </div>
                 @error('avaria')
                     <p id="input-error">{{ $message }}</p>
+                    <style>
+                        label[for='avaria'] i {
+                            background: #b90000
+                        }
+                    </style>
                 @enderror
             </label>
 
@@ -53,7 +62,12 @@
                     <input type="file" name="foto_avaria" id="foto_avaria" accept=".png,.jpg,.jpeg">
                 </div>
                 @error('foto_avaria')
-                <p id="input-error">{{ $message }}</p>
+                    <p id="input-error">{{ $message }}</p>
+                    <style>
+                        label[for='foto_avaria'] i {
+                            background: #b90000
+                        }
+                    </style>
                 @enderror
             </label>
 

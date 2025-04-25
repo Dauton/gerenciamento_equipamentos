@@ -20,6 +20,11 @@
                     </div>
                     @error('departamento')
                         <p id="input-error">{{ $message }}</p>
+                        <style>
+                            label[for='departamento'] i {
+                                background: #b90000
+                            }
+                        </style>
                     @enderror
                 </label>
 

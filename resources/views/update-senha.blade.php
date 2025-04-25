@@ -23,8 +23,8 @@
                     @error('senha')
                         <p id="input-error">{{ $message }}</p>
                         <style>
-                            #senha {
-                                border: 1px solid #f00
+                            label[for='senha'] i {
+                                background: #b90000
                             }
                         </style>
                     @enderror
@@ -37,8 +37,8 @@
                     @error('repete_senha')
                         <p id="input-error">{{ $message }}</p>
                         <style>
-                            #repete_senha {
-                                border: 1px solid #f00
+                            label[for='repete_senha'] i {
+                                background: #b90000
                             }
                         </style>
                     @enderror

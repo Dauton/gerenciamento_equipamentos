@@ -83,7 +83,7 @@ class InputValidationsController extends Controller
                 'termo_responsabilidade' => ['extensions:pdf,docx']
             ],
             [
-                'termo_responsabilidade.extensions' => 'O formato do termo de responsabilidae é inválido ou não permitido.'
+                'termo_responsabilidade.extensions' => 'O formato do termo de responsabilidae deve ser .pdf ou .docx'
             ]
         );
     }

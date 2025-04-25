@@ -20,6 +20,11 @@
                     </div>
                     @error('marca')
                         <p id="input-error">{{ $message }}</p>
+                        <style>
+                            label[for='marca'] i {
+                                background: #b90000
+                            }
+                        </style>
                     @enderror
                 </label>
 
@@ -30,6 +35,11 @@
                     </div>
                     @error('modelo')
                         <p id="input-error">{{ $message }}</p>
+                        <style>
+                            label[for='modelo'] i {
+                                background: #b90000
+                            }
+                        </style>
                     @enderror
                 </label>
                 <label for="serial"><p>Serial<span> *</span></p>
@@ -39,6 +49,11 @@
                     </div>
                     @error('serial')
                         <p id="input-error">{{ $message }}</p>
+                        <style>
+                            label[for='serial'] i {
+                                background: #b90000
+                            }
+                        </style>
                     @enderror
                 </label>
                 <label for="patrimonio"><p>Patrimônio<span> *</span></p>
@@ -48,6 +63,11 @@
                     </div>
                     @error('patrimonio')
                         <p id="input-error">{{ $message }}</p>
+                        <style>
+                            label[for='patrimonio'] i {
+                                background: #b90000
+                            }
+                        </style>
                     @enderror
                 </label>
                 <label for="site_equipamento"><p>Site<span> *</span></p>
@@ -56,16 +76,17 @@
                         <select name="site_equipamento" id="site_equipamento" class="select2">
                             <option value="{{ $exibir->site_equipamento }}">{{ $exibir->site_equipamento }}</option>
                             @foreach ($sites as $site)
-<<<<<<< HEAD
                                 <option value="{{ $site['usu_nomfil'] }}">{{ $site['usu_nomfil'] }}</option>
-=======
-                                <option value="{{$site['usu_nomfil']}}">{{$site['usu_nomfil']}}</option>
->>>>>>> d1d9f0e5267d74ccfcfa116b3c0387b829fe3020
                             @endforeach
                         </select>
                     </div>
                     @error('site_equipamento')
                         <p id="input-error">{{ $message }}</p>
+                        <style>
+                            label[for='site_equipamento'] i {
+                                background: #b90000
+                            }
+                        </style>
                     @enderror
                 </label>
                 <label for="status"><p>Status<span> *</span></p>
@@ -79,6 +100,11 @@
                     </div>
                     @error('status')
                         <p id="input-error">{{ $message }}</p>
+                        <style>
+                            label[for='status'] i {
+                                background: #b90000
+                            }
+                        </style>
                     @enderror
                 </label>
 

@@ -26,6 +26,11 @@
                 </div>
                 @error('equipamento')
                     <p id="input-error">{{ $message }}</p>
+                    <style>
+                        label[for='equipamento'] i {
+                            background: #b90000
+                        }
+                    </style>
                 @enderror
             </label>
 
@@ -41,7 +46,12 @@
                     </select>
                 </div>
                 @error('colaborador')
-                <p id="input-error">{{ $message }}</p>
+                    <p id="input-error">{{ $message }}</p>
+                    <style>
+                        label[for='colaborador'] i {
+                            background: #b90000
+                        }
+                    </style>
                 @enderror
             </label>
 
@@ -52,7 +62,12 @@
                     <input type="number" name="loginAmazon" id="loginAmazon">
                 </div>
                 @error('loginAmazon')
-                <p id="input-error">{{ $message }}</p>
+                    <p id="input-error">{{ $message }}</p>
+                        <style>
+                            label[for='loginAmazon'] i {
+                                background: #b90000
+                            }
+                        </style>
                 @enderror
             </label>
             <p id="result">000,00000000000000000000000</p>
@@ -65,12 +80,17 @@
                     <select name="departamento" id="departamento" class="select2">
                         <option value="" {{ old('departamento') ? '' : 'selected' }}>Selecione o departamento</option>
                         @foreach ($departamentos as $departamento)
-                        <option value="{{ $departamento->departamento }}" {{ old('departamento') == $departamento->departamento ? 'selected' : '' }}>{{ $departamento->departamento }}</option>
+                            <option value="{{ $departamento->departamento }}" {{ old('departamento') == $departamento->departamento ? 'selected' : '' }}>{{ $departamento->departamento }}</option>
                         @endforeach
                     </select>
                 </div>
                 @error('departamento')
-                <p id="input-error">{{ $message }}</p>
+                    <p id="input-error">{{ $message }}</p>
+                    <style>
+                        label[for='departamento'] i {
+                            background: #b90000
+                        }
+                    </style>
                 @enderror
             </label>
 
@@ -86,7 +106,12 @@
                     </select>
                 </div>
                 @error('turno')
-                <p id="input-error">{{ $message }}</p>
+                    <p id="input-error">{{ $message }}</p>
+                    <style>
+                        label[for='turno'] i {
+                            background: #b90000
+                        }
+                    </style>
                 @enderror
             </label>
 
@@ -97,7 +122,12 @@
                     <input type="file" name="termo_responsabilidade" id="termo_responsabilidade" accept=".pdf, .docx">
                 </div>
                 @error('termo_responsabilidade')
-                <p id="input-error">{{ $message }}</p>
+                    <p id="input-error">{{ $message }}</p>
+                    <style>
+                        label[for='termo_responsabilidade'] i {
+                            background: #b90000
+                        }
+                    </style>
                 @enderror
             </label>
 

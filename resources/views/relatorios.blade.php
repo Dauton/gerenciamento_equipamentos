@@ -25,6 +25,11 @@
                     </div>
                     @error('data_inicio')
                         <p id="input-error">{{ $message }}</p>
+                        <style>
+                            label[for='data_inicio'] i {
+                                background: #b90000
+                            }
+                        </style>
                     @enderror
                 </label>
 
@@ -36,6 +41,11 @@
                     </div>
                     @error('data_final')
                         <p id="input-error">{{ $message }}</p>
+                        <style>
+                            label[for='data_final'] i {
+                                background: #b90000
+                            }
+                        </style>
                     @enderror
                 </label>
 
@@ -52,6 +62,11 @@
                     </div>
                     @error('site')
                         <p id="input-error">{{ $message }}</p>
+                        <style>
+                            label[for='site'] i {
+                                background: #b90000
+                            }
+                        </style>
                     @enderror
                 </label>
 
@@ -69,6 +84,11 @@
                     </div>
                     @error('equipamento')
                         <p id="input-error">{{ $message }}</p>
+                        <style>
+                            label[for='equipamento'] i {
+                                background: #b90000
+                            }
+                        </style>
                     @enderror
                 </label>
 

@@ -29,6 +29,11 @@
                     </div>
                     @error('nome_colaborador')
                         <p id="input-error">{{ $message }}</p>
+                        <style>
+                            label[for='nome_colaborador'] i {
+                                background: #b90000
+                            }
+                        </style>
                     @enderror
                 </label>
 
@@ -39,6 +44,11 @@
                     </div>
                     @error('matricula_colaborador')
                         <p id="input-error">{{ $message }}</p>
+                        <style>
+                            label[for='matricula_colaborador'] i {
+                                background: #b90000
+                            }
+                        </style>
                     @enderror
                 </label>
                 <label for="site_colaborador"><p>Site<span> *</span></p>
@@ -53,6 +63,11 @@
                     </div>
                     @error('site_colaborador')
                         <p id="input-error">{{ $message }}</p>
+                        <style>
+                            label[for='site_colaborador'] i {
+                                background: #b90000
+                            }
+                        </style>
                     @enderror
                 </label>
 

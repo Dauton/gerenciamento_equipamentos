@@ -21,8 +21,8 @@
                     @error('nome')
                         <p id="input-error">{{ $message }}</p>
                         <style>
-                            #nome {
-                                border: 1px solid #f00
+                            label[for='nome'] i {
+                                background: #b90000 !important
                             }
                         </style>
                     @enderror
@@ -36,8 +36,8 @@
                     @error('usuario')
                         <p id="input-error">{{ $message }}</p>
                         <style>
-                            #usuario {
-                                border: 1px solid #f00
+                            label[for='usuario'] i {
+                                background: #b90000 !important
                             }
                         </style>
                     @enderror
@@ -50,8 +50,8 @@
                     @error('email')
                         <p id="input-error">{{ $message }}</p>
                         <style>
-                            #email {
-                                border: 1px solid #f00
+                            label[for='email'] i {
+                                background: #b90000 !important
                             }
                         </style>
                     @enderror
@@ -69,8 +69,8 @@
                     @error('site')
                         <p id="input-error">{{ $message }}</p>
                         <style>
-                            #site {
-                                border: 1px solid #f00
+                            label[for='site'] i {
+                                background: #b90000 !important
                             }
                         </style>
                     @enderror
@@ -88,8 +88,8 @@
                     @error('perfil')
                         <p id="input-error">{{ $message }}</p>
                         <style>
-                            #perfil {
-                                border: 1px solid #f00
+                            label[for='perfil'] i {
+                                background: #b90000 !important
                             }
                         </style>
                     @enderror
@@ -102,8 +102,8 @@
                     @error('senha')
                         <p id="input-error">{{ $message }}</p>
                         <style>
-                            #senha {
-                                border: 1px solid #f00
+                            label[for='senha'] i {
+                                background: #b90000 !important
                             }
                         </style>
                     @enderror
@@ -116,8 +116,8 @@
                     @error('repete_senha')
                         <p id="input-error">{{ $message }}</p>
                         <style>
-                            #repete_senha {
-                                border: 1px solid #f00
+                            label[for='repete_senha'] i {
+                                background: #b90000 !important
                             }
                         </style>
                     @enderror

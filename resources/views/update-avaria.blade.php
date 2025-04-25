@@ -20,6 +20,11 @@
                     </div>
                     @error('avaria')
                         <p id="input-error">{{ $message }}</p>
+                        <style>
+                            label[for='avaria'] i {
+                                background: #b90000
+                            }
+                        </style>
                     @enderror
                 </label>
 
@@ -34,6 +39,11 @@
                     </div>
                     @error('tipo_avaria')
                         <p id="input-error">{{ $message }}</p>
+                        <style>
+                            label[for='tipo_avaria'] i {
+                                background: #b90000
+                            }
+                        </style>
                     @enderror
                 </label>
 

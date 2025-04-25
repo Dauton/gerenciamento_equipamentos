@@ -20,6 +20,11 @@
                     </div>
                     @error('marca')
                         <p id="input-error">{{ $message }}</p>
+                        <style>
+                            label[for='marca'] i {
+                                background: #b90000
+                            }
+                        </style>
                     @enderror
                 </label>
 
@@ -30,6 +35,11 @@
                     </div>
                     @error('modelo')
                         <p id="input-error">{{ $message }}</p>
+                        <style>
+                            label[for='modelo'] i {
+                                background: #b90000
+                            }
+                        </style>
                     @enderror
                 </label>
                 <label for="serial"><p>Serial<span> *</span></p>
@@ -39,6 +49,11 @@
                     </div>
                     @error('serial')
                         <p id="input-error">{{ $message }}</p>
+                        <style>
+                            label[for='serial'] i {
+                                background: #b90000
+                            }
+                        </style>
                     @enderror
                 </label>
                 <label for="patrimonio"><p>Patrimônio<span> *</span></p>
@@ -48,6 +63,11 @@
                     </div>
                     @error('patrimonio')
                         <p id="input-error">{{ $message }}</p>
+                        <style>
+                            label[for='patrimonio'] i {
+                                background: #b90000
+                            }
+                        </style>
                     @enderror
                 </label>
             </label>
@@ -63,6 +83,11 @@
                 </div>
                 @error('site_equipamento')
                     <p id="input-error">{{ $message }}</p>
+                    <style>
+                        label[for='site_equipamento'] i {
+                            background: #b90000
+                        }
+                    </style>
                 @enderror
             </label>
                 <label for="status"><p>Status<span> *</span></p>
@@ -76,6 +101,11 @@
                     </div>
                     @error('status')
                         <p id="input-error">{{ $message }}</p>
+                        <style>
+                            label[for='status'] i {
+                                background: #b90000
+                            }
+                        </style>
                     @enderror
                 </label>
 

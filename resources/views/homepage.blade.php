@@ -26,6 +26,11 @@
                 </div>
                 @error('equipamento')
                     <p id="input-error">{{ $message }}</p>
+                    <style>
+                        label[for='equipamento'] i {
+                            background: #b90000
+                        }
+                    </style>
                 @enderror
             </label>
 
@@ -41,7 +46,12 @@
                     </select>
                 </div>
                 @error('colaborador')
-                <p id="input-error">{{ $message }}</p>
+                    <p id="input-error">{{ $message }}</p>
+                    <style>
+                        label[for='colaborador'] i {
+                            background: #b90000
+                        }
+                    </style>
                 @enderror
             </label>
 
@@ -53,7 +63,12 @@
                     <input type="number" name="loginAmazon" id="loginAmazon" value="">
                 </div>
                 @error('loginAmazon')
-                <p id="input-error">{{ $message }}</p>
+                    <p id="input-error">{{ $message }}</p>
+                        <style>
+                            label[for='loginAmazon'] i {
+                                background: #b90000
+                            }
+                        </style>
                 @enderror
             </label>
 
@@ -65,7 +80,12 @@
                     <input type="text" name="loginAmazonConvertido" id="loginAmazonConvertido">
                 </div>
                 @error('loginAmazon')
-                <p id="input-error">{{ $message }}</p>
+                    <p id="input-error">{{ $message }}</p>
+                        <style>
+                            label[for='loginAmazon'] i {
+                                background: #b90000
+                            }
+                        </style>
                 @enderror
             </label>
             -->
@@ -82,7 +102,12 @@
                     </select>
                 </div>
                 @error('departamento')
-                <p id="input-error">{{ $message }}</p>
+                    <p id="input-error">{{ $message }}</p>
+                    <style>
+                        label[for='departamento'] i {
+                            background: #b90000
+                        }
+                    </style>
                 @enderror
             </label>
 
@@ -93,12 +118,17 @@
                     <select name="turno" id="turno" class="select2">
                         <option value="" {{ old('turno') ? '' : 'selected' }}>Selecione o turno</option>
                         @foreach ($turnos as $turno)
-                        <option value="{{ $turno->turno }}" {{ old('turno') == $turno->turno ? 'selected' : '' }}>{{ $turno->turno }}</option>
+                            <option value="{{ $turno->turno }}" {{ old('turno') == $turno->turno ? 'selected' : '' }}>{{ $turno->turno }}</option>
                         @endforeach
                     </select>
                 </div>
                 @error('turno')
-                <p id="input-error">{{ $message }}</p>
+                    <p id="input-error">{{ $message }}</p>
+                    <style>
+                        label[for='turno'] i {
+                            background: #b90000
+                        }
+                    </style>
                 @enderror
             </label>
 

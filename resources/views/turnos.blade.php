@@ -20,6 +20,11 @@
                     </div>
                     @error('turno')
                         <p id="input-error">{{ $message }}</p>
+                        <style>
+                            label[for='turno'] i {
+                                background: #b90000
+                            }
+                        </style>
                     @enderror
                 </label>
 

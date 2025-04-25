@@ -1,4 +1,4 @@
-<!--@extends('layouts.content')
+@extends('layouts.content')
 
 @section('content')
     @include('layouts.menu-lateral')
@@ -20,6 +20,11 @@
                     </div>
                     @error('descricao')
                         <p id="input-error">{{ $message }}</p>
+                        <style>
+                            label[for='descricao'] i {
+                                background: #b90000
+                            }
+                        </style>
                     @enderror
                 </label>
 
