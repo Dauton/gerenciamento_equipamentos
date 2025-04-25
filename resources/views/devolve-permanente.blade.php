@@ -21,8 +21,8 @@
                     <i class="fa-solid fa-burst"></i>
                     <select name="ha_avaria" id="ha_avaria" class="select2">
                         <option value="" {{ old('ha_avaria') ? '' : 'selected' }}>Selecione</option>
-                        <option value="SIM">SIM</option>
-                        <option value="NÃO">NÃO</option>
+                        <option value="SIM" {{ old('ha_avaria') == 'SIM' ? 'selected' : '' }}>SIM</option>
+                        <option value="NÃO" {{ old('ha_avaria') == 'NÃO' ? 'selected' : '' }}>NÃO</option>
                     </select>
                 </div>
                 @error('ha_avaria')
