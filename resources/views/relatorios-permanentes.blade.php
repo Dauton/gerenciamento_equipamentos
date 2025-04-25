@@ -140,6 +140,8 @@
                                         @if (empty($exibe->data_devolucao))
                                             <a href="/devolve-permanente/{{Crypt::encrypt($exibe->id)}}"><i
                                                     class="fa-solid fa-circle-down" id="btn-table-blue"></i></a>
+                                        @else
+                                            Já devolvido
                                         @endif
                                     </td>
                                 </tr>
