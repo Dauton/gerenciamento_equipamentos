@@ -18,7 +18,7 @@
                 <h5>Para obter todos os dados, deixe os campos em branco.</h5>
 
                 <label for="data_inicio">
-                    <p>De<span> *</span></p>
+                    <p>De</p>
                     <div>
                         <i class="fa-solid fa-calendar-days"></i>
                         <input type="date" name="data_inicio" id="data_inicio" value="{{ old('data_inicio') }}">
@@ -34,7 +34,7 @@
                 </label>
 
                 <label for="data_final">
-                    <p>Até<span> *</span></p>
+                    <p>Até</p>
                     <div>
                         <i class="fa-solid fa-calendar-days"></i>
                         <input type="date" name="data_final" id="data_final" value="{{ old('data_final') }}">
@@ -50,7 +50,7 @@
                 </label>
 
                 <label for="site">
-                    <p>Site<span> *</span></p>
+                    <p>Site</p>
                     <div>
                         <i class="fa-solid fa-map-location-dot"></i>
                         <select name="site" id="site" class="select2">
@@ -71,7 +71,7 @@
                 </label>
 
                 <label for="equipamento">
-                    <p>Equipamento<span> *</span></p>
+                    <p>Equipamento</p>
                     <div>
                         <i class="fa-solid fa-microchip"></i>
                         <select name="equipamento" id="equipamento" class="select2">
