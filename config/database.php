@@ -62,6 +62,26 @@ return [
             ]) : [],
         ],
 
+        'mysql2' => [
+            'driver' => 'mysql',
+            'url' => env('DB_MYSQL2_URL'),
+            'host' => env('DB_MYSQL2_HOST', '10.60.252.113'),
+            'port' => env('DB_MYSQL2_PORT', '3306'),
+            'database' => env('DB_MYSQL2_DATABASE', 'dsi-einventario'),
+            'username' => env('DB_MYSQL2_USERNAME', 'ge_equip'),
+            'password' => env('DB_MYSQL2_PASSWORD', '@IDLbrasil2025'),
+            'unix_socket' => env('DB_MYSQL2_SOCKET', ''),
+            'charset' => env('DB_MYSQL2_CHARSET', 'utf8mb4'),
+            'collation' => env('DB_MYSQL2_COLLATION', 'utf8mb4_unicode_ci'),
+            'prefix' => '',
+            'prefix_indexes' => true,
+            'strict' => true,
+            'engine' => null,
+            'options' => extension_loaded('pdo_mysql') ? array_filter([
+                PDO::MYSQL_ATTR_SSL_CA => env('MYSQL_ATTR_SSL_CA'),
+            ]) : [],
+        ],
+
         'mariadb' => [
             'driver' => 'mariadb',
             'url' => env('DB_URL'),

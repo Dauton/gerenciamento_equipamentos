@@ -28,7 +28,7 @@ class ShowPagesController extends Controller
     {
         DadosCadastrosController::desativaColaboradorOnDate();
 
-        $equipamentos = Equipamento::all();
+        $equipamentos = Equipamento::select('sde_inventory_number')->where('sde_inventory_number', '!=', 0 )->orderBy('sde_inventory_number', 'asc')->get();
         $colaboradores = SapiensController::listaColaboradores();
         $colaboradores_temporarios = Colaborador::where('site_colaborador', session('usuario.site'))->where('status', 'ATIVADO')->get();
         $turnos = Turno::all();
@@ -66,7 +66,7 @@ class ShowPagesController extends Controller
     {
         $relatorios = Relatorio::limit(0)->get();
         $sites = SapiensController::listaSites();
-        $equipamentos = Equipamento::orderBy('modelo')->get();
+        $equipamentos = Equipamento::select('sde_inventory_number')->where('sde_inventory_number', '!=', 0 )->orderBy('sde_inventory_number', 'asc')->get();
         return view('relatorios', compact('relatorios', 'sites', 'equipamentos'));
     }
 
@@ -74,7 +74,7 @@ class ShowPagesController extends Controller
     // ENTREGA EQUIPAMENTO PERMANENTE PAGE
     public function entregaEquipamentoPermanentePage()
     {
-        $equipamentos = Equipamento::all();
+        $equipamentos = Equipamento::select('sde_inventory_number')->where('sde_inventory_number', '!=', 0 )->orderBy('sde_inventory_number', 'asc')->get();
         $colaboradores = SapiensController::listaColaboradores();
         $turnos = Turno::all();
         $departamentos = Departamento::all();
@@ -112,7 +112,7 @@ class ShowPagesController extends Controller
     {
         $relatoriosPermanentes = Relatorio::limit(0)->get();
         $sites = SapiensController::listaSites();
-        $equipamentos = Equipamento::orderBy('modelo')->get();
+        $equipamentos = Equipamento::select('sde_inventory_number')->where('sde_inventory_number', '!=', 0 )->orderBy('sde_inventory_number', 'asc')->get();
         $colaboradores = SapiensController::listaColaboradores();
         return view('relatorios-permanentes', compact('relatoriosPermanentes', 'sites', 'equipamentos', 'colaboradores'));
     }
@@ -133,7 +133,7 @@ class ShowPagesController extends Controller
         $ultimoCadastroSite = DadosCadastrosController::ultimoCadastroSite();
         $ultimoCadastroDepartamento = DadosCadastrosController::ultimoCadastroDepartamento();
         $ultimoCadastroTurno = DadosCadastrosController::ultimoCadastroTurno();
-        $ultimoCadastroEquipamento = DadosCadastrosController::ultimoCadastroEquipamento();
+        //$ultimoCadastroEquipamento = DadosCadastrosController::ultimoCadastroEquipamento();
         $ultimoCadastroAvaria = DadosCadastrosController::ultimoCadastroAvaria();
         $ultimoCadastroColaborador = DadosCadastrosController::ultimoCadastroColaborador();
 
@@ -150,7 +150,7 @@ class ShowPagesController extends Controller
             'ultimoCadastroSite',
             'ultimoCadastroDepartamento',
             'ultimoCadastroTurno',
-            'ultimoCadastroEquipamento',
+            //'ultimoCadastroEquipamento',
             'ultimoCadastroAvaria',
             'ultimoCadastroColaborador'
         ));

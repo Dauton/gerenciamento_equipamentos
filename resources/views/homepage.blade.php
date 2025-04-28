@@ -20,7 +20,7 @@
                     <select name="equipamento" id="equipamento" class="select2">
                         <option value="" {{ old('equipamento') ? '' : 'selected' }}>Selecione o equipamento</option>
                         @foreach ($equipamentos as $equipamento)
-                            <option value="{{ $equipamento->patrimonio }}" {{ old('equipamento') == $equipamento->patrimonio ? 'selected' : '' }}>{{ $equipamento->patrimonio . ' - ' . $equipamento->modelo }}</option>
+                            <option value="{{ $equipamento->sde_inventory_number }}" {{ old('equipamento') == $equipamento->sde_inventory_number ? 'selected' : '' }}>{{ $equipamento->sde_inventory_number }}</option>
                         @endforeach
                     </select>
                 </div>

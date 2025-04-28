@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Equipamento;
 use App\Models\Relatorio;
-use App\Models\Site;
 use Illuminate\Http\Request;
 
 class RelatorioController extends Controller
@@ -49,7 +48,6 @@ class RelatorioController extends Controller
 
         $agente_devolucao = session('usuario.nome');
         $avaria = $request->input('avaria');
-        $equipamento = $request->input('equipamento');
 
         // LÓGICA DA FOTO DA AVARIA
         $foto_avaria = $_FILES['foto_avaria'];
@@ -72,10 +70,6 @@ class RelatorioController extends Controller
             'data_devolucao' => now(),
             'avaria' => $avaria,
             'foto_avaria' => $arquivo_gravado
-        ]);
-
-        Equipamento::where('patrimonio', $equipamento)->update([
-            'situacao' => 'LIVRE'
         ]);
 
         return redirect('homepage')->with('alertSuccess', "Equipamento devolvido com sucesso.");
@@ -106,7 +100,7 @@ class RelatorioController extends Controller
 
         $relatorios = $query->orderBy('data_devolucao')->get();
         $sites = SapiensController::listaSites();
-        $equipamentos = Equipamento::all();
+        $equipamentos = Equipamento::select('sde_inventory_number')->where('sde_inventory_number', '!=', 0 )->orderBy('sde_inventory_number', 'asc')->get();
 
         if(count($relatorios) < 1) {
             return view('relatorios',[

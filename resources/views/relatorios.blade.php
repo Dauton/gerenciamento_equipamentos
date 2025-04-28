@@ -77,8 +77,8 @@
                         <select name="equipamento" id="equipamento" class="select2">
                             <option value="">Selecione o equipamento</option>
                             @foreach ($equipamentos as $equipamento)
-                                <option value="{{ $equipamento->patrimonio }}">
-                                    {{ $equipamento->patrimonio . ' - ' . $equipamento->modelo }}</option>
+                                <option value="{{ $equipamento->sde_inventory_number }}">
+                                    {{ $equipamento->sde_inventory_number}}</option>
                             @endforeach
                         </select>
                     </div>

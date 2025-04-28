@@ -100,6 +100,7 @@ class DadosCadastrosController extends Controller
         return $ultimo;
     }
 
+    /*
     // ÚLTIMO EQUIPAMENTO CADASTRADO
     public static function ultimoCadastroEquipamento()
     {
@@ -107,6 +108,7 @@ class DadosCadastrosController extends Controller
         $ultimo = $buscaItens->isEmpty() ? null : $buscaItens->last()->patrimonio;
         return $ultimo;
     }
+    */
 
     // ÚLTIMA AVARIA CADASTRADA
     public static function ultimoCadastroAvaria()

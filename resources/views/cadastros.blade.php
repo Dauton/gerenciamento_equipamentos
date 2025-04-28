@@ -58,16 +58,16 @@
                                     <a href="{{route('turnos')}}"><i class="fa-solid fa-file-circle-plus" id='btn-table-blue'></i></a>
                                 </td>
                             </tr>
-
+                            <!--
                             <tr>
                                 <td>Equipamentos</td>
-                                <td>{{$contagemEquipamentos}} equipamentos</td>
-                                <td>{{$ultimoCadastroEquipamento}}</td>
+                                <td>$contagemEquipamentos equipamentos</td>
+                                <td>$ultimoCadastroEquipamento</td>
                                 <td>
                                     <a href="{{route('equipamentos')}}"><i class="fa-solid fa-file-circle-plus" id='btn-table-blue'></i></a>
                                 </td>
                             </tr>
-
+                            -->
                             <tr>
                                 <td>Avarias</td>
                                 <td>{{$contagemAvarias}} avarias</td>
