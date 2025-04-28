@@ -105,9 +105,9 @@
                             <tr>
                                 <td>
                                     @if($exibe->status === 'ATIVADO')
-                                        <i class="fa-solid fa-user-check" id="table-icon-green" title="Ativado"></i> Ativado
+                                        <i class="fa-solid fa-user-check" id="table-icon-green" title="Ativado"> </i>
                                     @else
-                                        <i class="fa-solid fa-user-xmark" id="table-icon-red" title="Desativado"></i> Desativado
+                                        <i class="fa-solid fa-user-xmark" id="table-icon-red" title="Desativado"> </i>
                                     @endif
                                 </td>
                                 <td>{{ $exibe->nome_colaborador }}</td>
