@@ -91,11 +91,11 @@
                 <table class="DataTable">
                     <thead>
                         <tr>
-                            <th>Status</th>
                             <th>Nome</th>
                             <th>Matrícula</th>
                             <th>Site</th>
                             <th>Desativa em</th>
+                            <th>Status</th>
                             <th>Cadastrado em</th>
                             <th>Gerenciar</th>
                         </tr>
@@ -103,17 +103,19 @@
                     <tbody>
                         @foreach ($colaboradores as $exibe)
                             <tr>
-                                <td>
-                                    @if($exibe->status === 'ATIVADO')
-                                        <i class="fa-solid fa-user-check" id="table-icon-green" title="Ativado"> </i>
-                                    @else
-                                        <i class="fa-solid fa-user-xmark" id="table-icon-red" title="Desativado"> </i>
-                                    @endif
-                                </td>
                                 <td>{{ $exibe->nome_colaborador }}</td>
                                 <td>{{ $exibe->matricula_colaborador }}</td>
                                 <td>{{ $exibe->site_colaborador }} </td>
                                 <td>{{ Carbon\Carbon::parse($exibe->desativar_em)->format('d/m/Y') }} </td>
+                                <td>
+                                    @if($exibe->status === 'ATIVADO')
+                                        <p hidden>{{$exibe->status}}</p>
+                                        <i class="fa-solid fa-user-check" id="table-icon-green" title="Ativado"> </i>
+                                    @else
+                                        <p hidden>{{$exibe->status}}</p>
+                                        <i class="fa-solid fa-user-xmark" id="table-icon-red" title="Desativado"> </i>
+                                    @endif
+                                </td>
                                 <td>{{ \Carbon\Carbon::parse($exibe->created_at)->format('d/m/Y - H:i') }}</td>
                                 <td>
                                     <a href="update-colaborador/{{Crypt::encrypt($exibe->id)}}"><i class="fa-solid fa-square-pen" id="btn-table-blue"></i></a>
