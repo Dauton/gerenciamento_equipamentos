@@ -25,19 +25,24 @@ class RelatorioPermanenteController extends Controller
         $agente_entrega = session('usuario.nome');
 
         // LÓGICA DO TERMO DE RESPONSABILIDADE
-        $termo_responsabilidade = $_FILES['termo_responsabilidade'];
-        $nome = $termo_responsabilidade['name'];
-        $tmp_name = $termo_responsabilidade['tmp_name'];
+        $arquivo_gravado = null;
 
-        $extensao = pathinfo($nome, PATHINFO_EXTENSION);
-        $novo_nome = 'TERMO_' . date('d-m-Y-') . uniqid() . '.' . $extensao;
-        move_uploaded_file($tmp_name, "assets/uploads/docs/$novo_nome");
-        $arquivo_gravado = "assets/uploads/docs/$novo_nome";
+        if (isset($_FILES['termo_responsabilidade']) && $_FILES['termo_responsabilidade']['error'] === UPLOAD_ERR_OK) {
+            $termo_responsabilidade = $_FILES['termo_responsabilidade'];
+            $nome = $termo_responsabilidade['name'];
+            $tmp_name = $termo_responsabilidade['tmp_name'];
+
+            $extensao = pathinfo($nome, PATHINFO_EXTENSION);
+            $novo_nome = 'TERMO_' . date('d-m-Y-') . uniqid() . '.' . $extensao;
+
+            move_uploaded_file($tmp_name, "assets/uploads/docs/$novo_nome");
+            $arquivo_gravado = "assets/uploads/docs/$novo_nome";
+        }
 
         // VERIFICA SE O EQUIPAMENTO ESTÁ LIVRE
         $verifica_disponibilidade = RelatorioPermanente::where('equipamento', $equipamento)->where('data_devolucao', null)->first();
         if (!empty($verifica_disponibilidade)) {
-            return redirect('entrega-permanente')->with('alertError', 'Esse equipamento já foi entregue a um colaborador.');
+            return redirect('entrega-permanente')->withInput()->with('alertError', 'Esse equipamento já foi entregue a um colaborador.');
         }
 
         RelatorioPermanente::insert([

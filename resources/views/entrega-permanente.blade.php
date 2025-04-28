@@ -179,6 +179,7 @@
                             @endif
                         </td>
                         <td>
+                            @if(!empty($exibe->termo_responsabilidade))
                             <a href="{{$exibe->termo_responsabilidade}}" download>
                                 @if(str_ends_with($exibe->termo_responsabilidade, ".pdf"))
                                     <i class="fa-solid fa-file-pdf" id="btn-table-red"></i>
@@ -186,6 +187,7 @@
                                     <i class="fa-solid fa-file-word" id="btn-table-blue"></i>
                                 @endif
                             </a>
+                            @endif
                         </td>
                         <td>
                             @if(empty($exibe->data_devolucao))
