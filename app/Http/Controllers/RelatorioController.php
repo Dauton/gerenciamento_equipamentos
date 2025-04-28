@@ -84,6 +84,7 @@ class RelatorioController extends Controller
     // BUSCA RELATÓRIOS
     public function buscaRelatorio(Request $request)
     {
+
         $data_inicio = $request->input('data_inicio');
         $data_final = $request->input('data_final');
         $site = $request->input('site');

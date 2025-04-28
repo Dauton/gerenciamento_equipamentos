@@ -50,11 +50,12 @@ table i {
 table #table-icon-green {
     color: #217346;
 }
-
 table #table-icon-blue {
     color: var(--secondary-color);
 }
-
+table #table-icon-red {
+    color: #960000;
+}
 
 .dataTables_length {
     padding: 8px !important;

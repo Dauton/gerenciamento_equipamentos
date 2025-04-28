@@ -10,6 +10,7 @@ use App\Models\Site;
 use App\Models\Turno;
 use App\Models\Usuario;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class InputValidationsController extends Controller
 {
@@ -59,7 +60,7 @@ class InputValidationsController extends Controller
                 'ha_avaria' => 'Deve ser informado se houve não avaria no equipamento.',
             ]
         );
-        if($request->input('ha_avaria') === 'SIM') {
+        if ($request->input('ha_avaria') === 'SIM') {
             $request->validate(
                 [
                     'avaria' => ['required'],
@@ -140,7 +141,7 @@ class InputValidationsController extends Controller
         );
     }
 
-    // CREATE AVARIAS VALIDATIONS
+    // CREATE AVARIA VALIDATIONS
     public static function validationsAvaria(Request $request)
     {
         $request->validate(
@@ -156,12 +157,12 @@ class InputValidationsController extends Controller
         );
     }
 
-    // CREATE TURNOS VALIDATIONS
+    // CREATE TURNO VALIDATIONS
     public static function validationsTurno(Request $request)
     {
         $request->validate(
             [
-                'turno'=> ['required', 'unique:turnos,turno']
+                'turno' => ['required', 'unique:turnos,turno']
             ],
             [
                 'turno.required' => 'A descrição do turno deve ser informada.',
@@ -170,7 +171,7 @@ class InputValidationsController extends Controller
         );
     }
 
-    // CREATE DEPARTAMENTOS VALIDATIONS
+    // CREATE DEPARTAMENTO VALIDATIONS
     public static function validationsDepartamento(Request $request)
     {
         $request->validate(
@@ -184,7 +185,7 @@ class InputValidationsController extends Controller
         );
     }
 
-    // CREATE EQUIPAMENTOS VALIDATIONS
+    // CREATE EQUIPAMENTO VALIDATIONS
     public static function validationsEquipamento(Request $request)
     {
         $request->validate(
@@ -216,12 +217,15 @@ class InputValidationsController extends Controller
                 'nome_colaborador' => ['required'],
                 'matricula_colaborador' => ['required', 'unique:colaboradores,matricula_colaborador'],
                 'site_colaborador' => ['required'],
+                'desativar_em' => ['required', 'date']
             ],
             [
                 'nome_colaborador.required' => 'O nome do colaborador deve ser informado.',
                 'matricula_colaborador.required' => 'A matrícula do colaborador deve ser informada.',
-                'matricula_colaborador.unique' => 'A matrícula do colaborador informada já está cadastrada.',
+                'matricula_colaborador.unique' => 'A matrícula informada já está cadastrada.',
                 'site_colaborador.required' => 'O site do colaborador deve ser informado.',
+                'desativar_em.required' => 'A data de desativação deve ser informada.',
+                'desativar_em.date' => 'A data informada não é válida.'
             ]
         );
     }
@@ -274,7 +278,7 @@ class InputValidationsController extends Controller
 
         );
 
-        if($request->input('usuario') != $usuarioAtual->usuario) {
+        if ($request->input('usuario') != $usuarioAtual->usuario) {
             $request->validate(
                 [
                     'usuario' => ['unique:usuarios,usuario']
@@ -299,7 +303,7 @@ class InputValidationsController extends Controller
                 'descricao.required' => 'A descrição deve ser informada.',
             ]
         );
-        if($request->input('descricao') != $siteAtual->descricao) {
+        if ($request->input('descricao') != $siteAtual->descricao) {
             $request->validate(
                 [
                     'descricao' => ['unique:sites,descricao']
@@ -326,7 +330,8 @@ class InputValidationsController extends Controller
                 'tipo_avaria.required' => 'O tipo da avaria deve ser informado.'
             ]
         );
-        if($request->input('avaria') != $avariaAtual->avaria) {
+
+        if ($request->input('avaria') != $avariaAtual->avaria) {
             $request->validate(
                 [
                     'avaria' => ['unique:avarias,avaria']
@@ -345,14 +350,14 @@ class InputValidationsController extends Controller
 
         $request->validate(
             [
-                'turno'=> ['required']
+                'turno' => ['required']
             ],
             [
                 'turno.required' => 'A descrição do turno deve ser informada.',
             ]
         );
 
-        if($request->input('turno') != $turnoAtual->turno) {
+        if ($request->input('turno') != $turnoAtual->turno) {
             $request->validate(
                 [
                     'turno' => ['unique:turnos,turno']
@@ -378,7 +383,7 @@ class InputValidationsController extends Controller
             ]
         );
 
-        if($request->input('departamento') != $departamentoAtual->departamento) {
+        if ($request->input('departamento') != $departamentoAtual->departamento) {
             $request->validate(
                 [
                     'departamento' => ['unique:departamentos,departamento']
@@ -414,7 +419,7 @@ class InputValidationsController extends Controller
             ]
         );
 
-        if($request->input('serial') != $equipamentoAtual->patrimonio) {
+        if ($request->input('serial') != $equipamentoAtual->patrimonio) {
             $request->validate(
                 [
                     'patrimonio' => ['unique:equipamentos,patrimonio']
@@ -436,21 +441,23 @@ class InputValidationsController extends Controller
                 'nome_colaborador' => ['required'],
                 'matricula_colaborador' => ['required'],
                 'site_colaborador' => ['required'],
+                'desativar_em' => ['required', 'date']
             ],
             [
                 'nome_colaborador.required' => 'O nome do colaborador deve ser informado.',
                 'matricula_colaborador.required' => 'A matrícula do colaborador deve ser informada.',
                 'site_colaborador.required' => 'O site do colaborador deve ser informado.',
+                'desativar_em' => 'A data de desativação deve ser informada.'
             ]
         );
 
-        if($request->input('matricula_colaborador') != $colaboradorAtual->matricula_colaborador) {
+        if ($request->input('matricula_colaborador') != $colaboradorAtual->matricula_colaborador) {
             $request->validate(
                 [
                     'matricula_colaborador' => ['unique:colaboradores,matricula_colaborador']
                 ],
                 [
-                    'matricula_colaborador.unique' => 'A matrícula do colaborador informada já está cadastrada.'
+                    'matricula_colaborador.unique' => 'A matrícula informada já está cadastrada.'
                 ]
             );
         }

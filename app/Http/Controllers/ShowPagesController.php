@@ -26,14 +26,17 @@ class ShowPagesController extends Controller
     // HOMEPAGE PAGE
     public function homepagePage()
     {
+        DadosCadastrosController::desativaColaboradorOnDate();
+
         $equipamentos = Equipamento::all();
         $colaboradores = SapiensController::listaColaboradores();
+        $colaboradores_temporarios = Colaborador::where('site_colaborador', session('usuario.site'))->where('status', 'ATIVADO')->get();
         $turnos = Turno::all();
         $departamentos = Departamento::all();
         $relatorios = Relatorio::where('data_devolucao', null)->where('site', session('usuario.site'))->get();
         return view(
             'homepage',
-            compact('equipamentos', 'colaboradores', 'turnos', 'departamentos', 'relatorios')
+            compact('equipamentos', 'colaboradores', 'colaboradores_temporarios', 'turnos', 'departamentos', 'relatorios')
         );
     }
 

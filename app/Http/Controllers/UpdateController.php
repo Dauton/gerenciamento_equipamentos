@@ -144,15 +144,31 @@ class UpdateController extends Controller
         $nome_colaborador = $request->input('nome_colaborador');
         $matricula_colaborador = $request->input('matricula_colaborador');
         $site_colaborador = $request->input('site_colaborador');
+        $dasativar_em = $request->input('desativar_em');
         $updated_at = now();
 
         Colaborador::where('id', $id)->update([
             'nome_colaborador' => trim(mb_strtoupper($nome_colaborador)),
             'matricula_colaborador' => trim(mb_strtoupper($matricula_colaborador)),
             'site_colaborador' => trim(mb_strtoupper($site_colaborador)),
+            'desativar_em' => trim(mb_strtoupper($dasativar_em)),
             'updated_at' => $updated_at
         ]);
 
-        return redirect('colaboradores')->with('alertSuccess', 'Colaborador editado com sucesso.');
+        // ATIVA COLABORADOR
+        if($dasativar_em > now()) {
+            Colaborador::where('id', $id)->update([
+                'status' => 'ATIVADO'
+            ]);
+            return redirect('colaboradores')->with('alertSuccess', 'Colaborador editado e ATIVADO com sucesso.');
+
+        // DESATIVA COLABORADOR
+        } elseif($dasativar_em < now()) {
+            Colaborador::where('id', $id)->update([
+                'status' => 'DESATIVADO'
+            ]);
+            return redirect('colaboradores')->with('alertSuccess', 'Colaborador editado e DESATIVADO com sucesso.');
+
+        }
     }
 }

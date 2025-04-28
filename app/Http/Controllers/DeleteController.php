@@ -104,4 +104,5 @@ class DeleteController extends Controller
         Colaborador::where('id', $id)->delete();
         return redirect('/colaboradores')->with('alertSuccess', 'Colaborador excluído com sucesso.');
     }
+
 }

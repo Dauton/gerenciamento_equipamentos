@@ -4,14 +4,14 @@
     @include('layouts.menu-lateral')
     <section class="centro">
         <header class="cabecalho">
-            <h1 class="cabecalho-title"><a href="{{ route('homepage') }}">Homepage</a> / <a href="{{ route('cadastros') }}">Cadastros</a> / Colaboradores</h1>
+            <h1 class="cabecalho-title"><a href="{{ route('homepage') }}">Homepage</a> / <a href="{{ route('cadastros') }}">Cadastros</a> / Colaboradores temporários</h1>
             <i class="fa-solid fa-microchip"></i>
         </header>
         <article class="conteudo">
             <form method="post" action="createColaborador">
                 @csrf
 
-                <h1>Cadastro de colaborador</h1>
+                <h1>Cadastro de colaborador temporário</h1>
 
                 <label for="nome_colaborador"><p>Nome<span> *</span></p>
                     <div>
@@ -62,6 +62,21 @@
                     @enderror
                 </label>
 
+                <label for="desativar_em"><p>Ativo até (o colaborador será desativado conforme data informada.)<span> *</span></p>
+                    <div>
+                        <i class="fa-solid fa-id-card"></i>
+                        <input type="date" name="desativar_em" id="desativar_em" placeholder="Complete com o nome do colaborador" value="{{ old('desativar_em') }}">
+                    </div>
+                    @error('desativar_em')
+                        <p id="input-error">{{ $message }}</p>
+                        <style>
+                            label[for='desativar_em'] i {
+                                background: #b90000
+                            }
+                        </style>
+                    @enderror
+                </label>
+
                 <div class="container-buttons">
                     <button type="submit">Cadastrar</button>
                     <a href="{{ route('cadastros')}}"><button type="button" id="btn-cancelar">Cancelar</button></a>
@@ -71,14 +86,16 @@
 
             <section class="table-container">
 
-                <h1>Gerenciamento de colaboradores</h1>
+                <h1>Gerenciamento de colaboradores temporários</h1>
 
                 <table class="DataTable">
                     <thead>
                         <tr>
+                            <th>Status</th>
                             <th>Nome</th>
                             <th>Matrícula</th>
                             <th>Site</th>
+                            <th>Desativa em</th>
                             <th>Cadastrado em</th>
                             <th>Gerenciar</th>
                         </tr>
@@ -86,9 +103,17 @@
                     <tbody>
                         @foreach ($colaboradores as $exibe)
                             <tr>
+                                <td>
+                                    @if($exibe->status === 'ATIVADO')
+                                        <i class="fa-solid fa-user-check" id="table-icon-green" title="Ativado"></i> Ativado
+                                    @else
+                                        <i class="fa-solid fa-user-xmark" id="table-icon-red" title="Desativado"></i> Desativado
+                                    @endif
+                                </td>
                                 <td>{{ $exibe->nome_colaborador }}</td>
                                 <td>{{ $exibe->matricula_colaborador }}</td>
                                 <td>{{ $exibe->site_colaborador }} </td>
+                                <td>{{ Carbon\Carbon::parse($exibe->desativar_em)->format('d/m/Y') }} </td>
                                 <td>{{ \Carbon\Carbon::parse($exibe->created_at)->format('d/m/Y - H:i') }}</td>
                                 <td>
                                     <a href="update-colaborador/{{Crypt::encrypt($exibe->id)}}"><i class="fa-solid fa-square-pen" id="btn-table-blue"></i></a>

@@ -1,26 +1,22 @@
-@if ($errors->any())
-    <div class="alert alert-danger">
-        <ul>
-            @foreach ($errors->all() as $erro)
-                <li>{{ $erro }}</li>
-            @endforeach
-        </ul>
-    </div>
-@endif
 @extends('layouts.content')
 
 @section('content')
     @include('layouts.menu-lateral')
     <section class="centro">
         <header class="cabecalho">
-            <h1 class="cabecalho-title"><a href="{{ route('homepage') }}">Homepage</a> / <a href="{{ route('cadastros') }}">Cadastros</a> / <a href='{{ route('colaboradores') }}'>Colaboradores</a> / Edição de colaborador</h1></h1>
+            <h1 class="cabecalho-title"><a href="{{ route('homepage') }}">Homepage</a> / <a href="{{ route('cadastros') }}">Cadastros</a> / <a href='{{ route('colaboradores') }}'>Colaboradores</a> / Edição de colaborador temporário</h1></h1>
             <i class="fa-solid fa-users-gear"></i>
         </header>
         <article class="conteudo">
             <form method="post" action="/updateColaborador/{{ $exibir->id }}">
                 @csrf
 
-                <h1>Edição de colaborador</h1>
+                <h1>Edição de colaborador temporário</h1>
+
+                <h5>
+                    Para ativar, informe uma data posterior à de hoje.<br>
+                    Para desativar, informe uma data anterior ou igual à de hoje.
+                </h5>
 
                 <label for="nome_colaborador"><p>Nome<span> *</span></p>
                     <div>
@@ -65,6 +61,21 @@
                         <p id="input-error">{{ $message }}</p>
                         <style>
                             label[for='site_colaborador'] i {
+                                background: #b90000
+                            }
+                        </style>
+                    @enderror
+                </label>
+
+                <label for="desativar_em"><p>Ativo até (o colaborador será desativado conforme data informada.)<span> *</span></p>
+                    <div>
+                        <i class="fa-solid fa-id-card"></i>
+                        <input type="date" name="desativar_em" id="desativar_em" value="{{ $exibir->desativar_em }}">
+                    </div>
+                    @error('desativar_em')
+                        <p id="input-error">{{ $message }}</p>
+                        <style>
+                            label[for='desativar_em'] i {
                                 background: #b90000
                             }
                         </style>

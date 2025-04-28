@@ -56,7 +56,7 @@ class DadosCadastrosController extends Controller
         return $contagem;
     }
 
-        // CONTA COLABORADORES CADASTRADOS
+    // CONTA COLABORADORES CADASTRADOS
     public static function contaColaboradores()
     {
         $contagem = Colaborador::count();
@@ -122,5 +122,13 @@ class DadosCadastrosController extends Controller
         $buscaItens = Colaborador::get('nome_colaborador');
         $ultimo = $buscaItens->isEmpty() ? null : $buscaItens->last()->nome_colaborador;
         return $ultimo;
+    }
+
+    // DESATIVA O COLABORADOR TEMPORÁRIO AUTOMATICAMENTE CONFORME DATA.
+    public static function desativaColaboradorOnDate()
+    {
+        Colaborador::where('desativar_em', '<=', now())->update([
+            'status' => 'DESATIVADO'
+        ]);
     }
 }

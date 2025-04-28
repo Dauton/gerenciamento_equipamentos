@@ -118,7 +118,7 @@ class CreateController extends Controller
     // CADASTRO DE EQUIPAMENTO
     public function createEquipamento(Request $request)
     {
-        
+
         InputValidationsController::validationsEquipamento($request);
 
         $marca = $request->input('marca');
@@ -151,12 +151,15 @@ class CreateController extends Controller
 
         $nome_colaborador = $request->input('nome_colaborador');
         $matricula_colaborador = $request->input('matricula_colaborador');
+        $desativar_em = $request->input('desativar_em');
         $site_colaborador = $request->input('site_colaborador');
 
         Colaborador::insert([
-            'nome_colaborador' => trim(mb_strtoupper($nome_colaborador)),
+            'nome_colaborador' => trim(mb_strtoupper($nome_colaborador)) . ' - TEMP',
             'matricula_colaborador' => trim(mb_strtoupper($matricula_colaborador)),
             'site_colaborador' => trim(mb_strtoupper($site_colaborador)),
+            'desativar_em' => $desativar_em,
+            'status' => 'ATIVADO',
             'created_by' => session('usuario.nome')
         ]);
 
