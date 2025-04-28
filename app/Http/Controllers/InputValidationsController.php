@@ -217,7 +217,7 @@ class InputValidationsController extends Controller
                 'nome_colaborador' => ['required'],
                 'matricula_colaborador' => ['required', 'unique:colaboradores,matricula_colaborador'],
                 'site_colaborador' => ['required'],
-                'desativar_em' => ['required', 'date']
+                'desativar_em' => ['required', 'date', 'after:today']
             ],
             [
                 'nome_colaborador.required' => 'O nome do colaborador deve ser informado.',
@@ -225,7 +225,8 @@ class InputValidationsController extends Controller
                 'matricula_colaborador.unique' => 'A matrícula informada já está cadastrada.',
                 'site_colaborador.required' => 'O site do colaborador deve ser informado.',
                 'desativar_em.required' => 'A data de desativação deve ser informada.',
-                'desativar_em.date' => 'A data informada não é válida.'
+                'desativar_em.date' => 'A data informada não é válida.',
+                'desativar_em.after' => 'A data deve ser superior à hoje.'
             ]
         );
     }
@@ -447,7 +448,8 @@ class InputValidationsController extends Controller
                 'nome_colaborador.required' => 'O nome do colaborador deve ser informado.',
                 'matricula_colaborador.required' => 'A matrícula do colaborador deve ser informada.',
                 'site_colaborador.required' => 'O site do colaborador deve ser informado.',
-                'desativar_em' => 'A data de desativação deve ser informada.'
+                'desativar_em.required' => 'A data de desativação deve ser informada.',
+                'desativar_em.date' => 'A data informada é inválida.'
             ]
         );
 
