@@ -62,26 +62,6 @@ return [
             ]) : [],
         ],
 
-        'mysql2' => [
-            'driver' => 'mysql',
-            'url' => env('DB_MYSQL2_URL'),
-            'host' => env('DB_MYSQL2_HOST', '10.60.252.113'),
-            'port' => env('DB_MYSQL2_PORT', '3306'),
-            'database' => env('DB_MYSQL2_DATABASE', 'dsi-einventario'),
-            'username' => env('DB_MYSQL2_USERNAME', 'ge_equip'),
-            'password' => env('DB_MYSQL2_PASSWORD', '@IDLbrasil2025'),
-            'unix_socket' => env('DB_MYSQL2_SOCKET', ''),
-            'charset' => env('DB_MYSQL2_CHARSET', 'utf8mb4'),
-            'collation' => env('DB_MYSQL2_COLLATION', 'utf8mb4_unicode_ci'),
-            'prefix' => '',
-            'prefix_indexes' => true,
-            'strict' => true,
-            'engine' => null,
-            'options' => extension_loaded('pdo_mysql') ? array_filter([
-                PDO::MYSQL_ATTR_SSL_CA => env('MYSQL_ATTR_SSL_CA'),
-            ]) : [],
-        ],
-
         'mariadb' => [
             'driver' => 'mariadb',
             'url' => env('DB_URL'),
@@ -117,20 +97,25 @@ return [
             'sslmode' => 'prefer',
         ],
 
-        'sqlsrv' => [
-            'driver' => 'sqlsrv',
-            'host' => env('DB_HOST', '10.60.253.20'),
-            'port' => env('DB_PORT', '1433'),
-            'database' => env('DB_DATABASE', 'sapiens'),
-            'username' => env('DB_USERNAME', 'consulta'),
-            'password' => env('DB_PASSWORD', '@dM1324'),
-            'charset' => 'utf8',
+        'mysql2' => [
+            'driver' => 'mysql',
+            'url' => env('DB_MYSQL2_URL'),
+            'host' => env('DB_MYSQL2_HOST', '10.60.252.113'),
+            'port' => env('DB_MYSQL2_PORT', '3306'),
+            'database' => env('DB_MYSQL2_DATABASE', 'dsi-einventario'),
+            'username' => env('DB_MYSQL2_USERNAME', 'ge_equip'),
+            'password' => env('DB_MYSQL2_PASSWORD', '@IDLbrasil2025'),
+            'unix_socket' => env('DB_MYSQL2_SOCKET', ''),
+            'charset' => env('DB_MYSQL2_CHARSET', 'utf8mb4'),
+            'collation' => env('DB_MYSQL2_COLLATION', 'utf8mb4_unicode_ci'),
             'prefix' => '',
-            'encrypt' => 'false',
-            'trust_server_certificate' => true,
+            'prefix_indexes' => true,
+            'strict' => true,
+            'engine' => null,
+            'options' => extension_loaded('pdo_mysql') ? array_filter([
+                PDO::MYSQL_ATTR_SSL_CA => env('MYSQL_ATTR_SSL_CA'),
+            ]) : [],
         ],
-
-
     ],
 
     /*

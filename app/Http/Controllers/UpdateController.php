@@ -25,7 +25,7 @@ class UpdateController extends Controller
         $usuario = $request->input('usuario');
         $email = $request->input('email');
         $site = $request->input('site');
-        $perfil = $request->input('perfil');
+        $perfil = $request->input('perfil') ? : 'OPERAÇÃO';
 
         Usuario::where('id', $id)->update([
             'nome' => trim(mb_strtoupper($nome)),

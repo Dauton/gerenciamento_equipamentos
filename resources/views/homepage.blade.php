@@ -20,7 +20,12 @@
                     <select name="equipamento" id="equipamento" class="select2">
                         <option value="" {{ old('equipamento') ? '' : 'selected' }}>Selecione o equipamento</option>
                         @foreach ($equipamentos as $equipamento)
-                            <option value="{{ $equipamento->sde_inventory_number }}" {{ old('equipamento') == $equipamento->sde_inventory_number ? 'selected' : '' }}>{{ $equipamento->sde_inventory_number }}</option>
+                            @php
+                                $valor = 'PAT ' . $equipamento->sde_inventory_number . ' - SN ' . $equipamento->sde_serial_number;
+                            @endphp
+                            <option value="{{ $valor }}" {{ old('equipamento') == $valor ? 'selected' : '' }}>
+                                {{ $valor }}
+                            </option>
                         @endforeach
                     </select>
                 </div>

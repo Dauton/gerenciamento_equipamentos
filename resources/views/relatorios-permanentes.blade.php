@@ -44,10 +44,14 @@
                     <div>
                         <i class="fa-solid fa-microchip"></i>
                         <select name="equipamento" id="equipamento" class="select2">
-                            <option value="">Selecione o equipamento</option>
+                            <option value="" {{ old('equipamento') ? '' : 'selected' }}>Selecione o equipamento</option>
                             @foreach ($equipamentos as $equipamento)
-                                <option value="{{ $equipamento->sde_inventory_number }}">
-                                    {{ $equipamento->sde_inventory_number}}</option>
+                                @php
+                                    $valor = 'PAT ' . $equipamento->sde_inventory_number . ' - SN ' . $equipamento->sde_serial_number;
+                                @endphp
+                                <option value="{{ $valor }}" {{ old('equipamento') == $valor ? 'selected' : '' }}>
+                                    {{ $valor }}
+                                </option>
                             @endforeach
                         </select>
                     </div>
@@ -148,7 +152,7 @@
                                             @if (str_ends_with($exibe->termo_responsabilidade, '.pdf'))
                                                 <i class="fa-solid fa-file-pdf" id="btn-table-red"></i>
                                             @else
-                                                <i class="fa-solid fa-file-word" id="btn-table-blue"></i>
+                                                <i class="fa-solid fa-file-word" id="btn-table-blue-secondary"></i>
                                             @endif
                                         </a>
                                         @endif

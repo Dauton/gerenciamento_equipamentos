@@ -104,7 +104,6 @@ class InputValidationsController extends Controller
                 'usuario' => ['required', 'unique:usuarios,usuario'],
                 'email' => ['required', 'email'],
                 'site' => ['required'],
-                'perfil' => ['required'],
                 'senha' => ['required', 'min: 12', 'regex: /[a-z]/', 'regex: /[A-Z]/', 'regex: /[0-9]/', 'regex: /[!@#$%^&*(),.?":{}|<>]/'],
                 'repete_senha' => ['required', 'same:senha']
             ],
@@ -115,15 +114,26 @@ class InputValidationsController extends Controller
                 'email.required' => 'O e-mail deve ser informado.',
                 'email.email' => 'O e-mail informado não é válido.',
                 'site.required' => 'O site deve ser informado.',
-                'perfil.required' => 'O perfil deve ser informado.',
                 'senha.required' => 'A senha deve ser informada.',
                 'senha.min' => 'A senha deve possuir pelo menos :min caracteres',
                 'senha.regex' => 'A senha deve possuir pelo menos uma letra maiúscula, uma letra minuscula, um número e um caractere especial.',
                 'repete_senha.required' => 'A senha deve ser confirmada.',
                 'repete_senha.same' => 'A senhas não conferem.'
             ]
-
         );
+
+        // VALIDA O CAMPO DE PERFIL APENAS SE O USUÁRIO LOGADO FOR UM ADMIN
+        if(session('usuario.perfil') === 'ADMIN') {
+            $request->validate(
+                [
+                    'perfil' => ['required'],
+                ],
+                [
+                    'perfil.required' => 'O perfil deve ser informado.',
+                ]
+            );
+        }
+
     }
 
 
@@ -266,7 +276,6 @@ class InputValidationsController extends Controller
                 'usuario' => ['required'],
                 'email' => ['required', 'email'],
                 'site' => ['required'],
-                'perfil' => ['required']
             ],
             [
                 'nome.required' => 'O nome deve ser informado.',
@@ -274,7 +283,6 @@ class InputValidationsController extends Controller
                 'email.required' => 'O e-mail deve ser informado.',
                 'email.email' => 'O e-mail informado não é válido.',
                 'site.required' => 'O site deve ser informado.',
-                'perfil.required' => 'O perfil deve ser informado.'
             ]
 
         );
@@ -286,6 +294,18 @@ class InputValidationsController extends Controller
                 ],
                 [
                     'usuario.unique' => 'O usuário informado já está cadastrado.'
+                ]
+            );
+        }
+
+        // VALIDA O CAMPO DE PERFIL APENAS SE O USUÁRIO LOGADO FOR UM ADMIN
+        if(session('usuario.perfil') === 'ADMIN') {
+            $request->validate(
+                [
+                    'perfil' => ['required']
+                ],
+                [
+                    'perfil.required' => 'O perfil deve ser informado.'
                 ]
             );
         }

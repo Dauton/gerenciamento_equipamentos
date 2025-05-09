@@ -75,25 +75,28 @@
                         </style>
                     @enderror
                 </label>
-                <label for="perfil"><p>Perfil<span> *</span></p>
-                    <div>
-                        <i class="fa-solid fa-user-shield"></i>
-                        <select name="perfil" id="perfil" class="select2">
-                            <option value="" disabled {{ old('perfil') ? '' : 'selected' }}>Selecione o perfil</option>
-                            <option value="ADMIN" {{ old('perfil') == 'ADMIN' ? 'selected' : '' }}>ADMIN</option>
-                            <option value="OPERAÇÃO" {{ old('perfil') == 'OPERAÇÃO' ? 'selected' : '' }}>OPERAÇÃO</option>
+                @if(session('usuario.perfil') === 'ADMIN')
+                    <label for="perfil"><p>Perfil<span> *</span></p>
+                        <div>
+                            <i class="fa-solid fa-user-shield"></i>
+                            <select name="perfil" id="perfil" class="select2">
+                                <option value="" disabled {{ old('perfil') ? '' : 'selected' }}>Selecione o perfil</option>
+                                <option value="ADMIN" {{ old('perfil') == 'ADMIN' ? 'selected' : '' }}>ADMIN</option>
+                                <option value="TI SITES" {{ old('perfil') == 'TI SITES' ? 'selected' : '' }}>TI SITES</option>
+                                <option value="OPERAÇÃO" {{ old('perfil') == 'OPERAÇÃO' ? 'selected' : '' }}>OPERAÇÃO</option>
+                            </select>
+                        </div>
+                        @if ($errors->has('perfil'))
+                            <p id="input-error">{{ $errors->first('perfil') }}</p>
+                            <style>
+                                label[for='perfil'] i {
+                                    background: #b90000
+                                }
+                            </style>
+                        @endif
+                    </label>
+                @endif
 
-                        </select>
-                    </div>
-                    @error('perfil')
-                        <p id="input-error">{{ $message }}</p>
-                        <style>
-                            label[for='perfil'] i {
-                                background: #b90000 !important
-                            }
-                        </style>
-                    @enderror
-                </label>
                 <label for="senha"><p>Senha<span> *</span></p>
                     <div>
                         <i class="fa-solid fa-lock"></i>

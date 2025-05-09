@@ -44,23 +44,14 @@ button:hover {
     background: var(--quaternary-color);
 }
 
-#btn-table-yellow,
-#btn-table-blue,
-#btn-table-red {
-    font-size: 23px;
-    margin: 0 5px;
-}
-
-#btn-table-yellow:hover,
-#btn-table-blue:hover,
-#btn-table-red:hover {
-    filter: brightness(70%);
-}
 #btn-table-yellow {
     color: #daa520;
 }
 #btn-table-blue {
     color: var(--primary-color);
+}
+#btn-table-blue-secondary {
+    color: var(--secondary-color);
 }
 #btn-table-red {
     color: #dc0000;

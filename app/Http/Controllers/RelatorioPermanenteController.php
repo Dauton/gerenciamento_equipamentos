@@ -114,7 +114,7 @@ class RelatorioPermanenteController extends Controller
 
         $relatoriosPermanentes = $query->orderBy('data_devolucao')->get();
         $sites = SapiensController::listaSites();
-        $equipamentos = Equipamento::all();
+        $equipamentos = Equipamento::select('sde_inventory_number', 'sde_serial_number')->orderBy('sde_inventory_number', 'asc')->get();
         $colaboradores = SapiensController::listaColaboradores();
 
         if (count($relatoriosPermanentes) < 1) {

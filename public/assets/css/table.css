@@ -45,8 +45,13 @@ table tr:nth-child(even) {
 }
 
 table i {
-    font-size: 17px;
+    font-size: 23px;
+    margin: 0 5px;
 }
+table i:hover {
+    filter: brightness(70%);
+}
+
 table #table-icon-green {
     color: #217346;
 }

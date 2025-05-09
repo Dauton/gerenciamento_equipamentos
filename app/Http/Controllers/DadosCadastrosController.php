@@ -17,7 +17,15 @@ class DadosCadastrosController extends Controller
     // CONTA USUÁRIOS CADASTRADOS
     public static function contaUsuarios()
     {
-        $contagem = Usuario::count();
+        $perfil_usuario = session('usuario.perfil');
+        $site_usuario = session('usuario.site');
+
+        if($perfil_usuario === 'TI SITES') {
+            $contagem = Usuario::where('site', $site_usuario)->count();
+        } else {
+            $contagem = Usuario::count();
+        }
+
         return $contagem;
     }
 
@@ -71,7 +79,15 @@ class DadosCadastrosController extends Controller
     // ÚLTIMO USUÁRIO CADASTRADO
     public static function ultimoCadastroUsuario()
     {
-        $buscaItens = Usuario::get('usuario');
+        $perfil_usuario = session('usuario.perfil');
+        $site_usuario = session('usuario.site');
+
+        if($perfil_usuario === 'TI SITES') {
+            $buscaItens = Usuario::where('site', $site_usuario)->get('usuario');
+        } else {
+            $buscaItens = Usuario::get('usuario');
+        }
+
         $ultimo = $buscaItens->isEmpty() ? null : $buscaItens->last()->usuario;
         return $ultimo;
     }

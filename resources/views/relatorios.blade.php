@@ -75,10 +75,14 @@
                     <div>
                         <i class="fa-solid fa-microchip"></i>
                         <select name="equipamento" id="equipamento" class="select2">
-                            <option value="">Selecione o equipamento</option>
+                            <option value="" {{ old('equipamento') ? '' : 'selected' }}>Selecione o equipamento</option>
                             @foreach ($equipamentos as $equipamento)
-                                <option value="{{ $equipamento->sde_inventory_number }}">
-                                    {{ $equipamento->sde_inventory_number}}</option>
+                                @php
+                                    $valor = 'PAT ' . $equipamento->sde_inventory_number . ' - SN ' . $equipamento->sde_serial_number;
+                                @endphp
+                                <option value="{{ $valor }}" {{ old('equipamento') == $valor ? 'selected' : '' }}>
+                                    {{ $valor }}
+                                </option>
                             @endforeach
                         </select>
                     </div>
@@ -126,10 +130,10 @@
                                     <td>
                                         @if (!empty($exibe->agente_devolucao))
                                             <i class="fa-solid fa-circle-check" id="table-icon-green"
-                                                title="Relatório concluído."></i>
+                                                title="Equipamento devolvido."></i>
                                         @else
                                             <i class="fa-solid fa-clock" id="table-icon-blue"
-                                                title="Relatório pendente de devolução."></i>
+                                                title="Equipamento pendente de devolução ou em uso."></i>
                                         @endif
                                     </td>
                                     <td>{{ $exibe->site }}</td>
@@ -140,8 +144,7 @@
                                     <td>{{ $exibe->departamento }}</td>
                                     <td>{{ $exibe->turno }}</td>
                                     <td>{{ $exibe->agente_devolucao }}</td>
-                                    <td>{{ $exibe->data_devolucao ? \Carbon\Carbon::parse($exibe->data_devolucao)->format('d/m/Y - H:i') : '' }}
-                                    </td>
+                                    <td>{{ $exibe->data_devolucao ? \Carbon\Carbon::parse($exibe->data_devolucao)->format('d/m/Y - H:i') : '' }}</td>
                                     <td>{{ $exibe->avaria }}</td>
                                     <td>
                                         @if (!empty($exibe->foto_avaria))

@@ -100,7 +100,7 @@ class RelatorioController extends Controller
 
         $relatorios = $query->orderBy('data_devolucao')->get();
         $sites = SapiensController::listaSites();
-        $equipamentos = Equipamento::select('sde_inventory_number')->where('sde_inventory_number', '!=', 0 )->orderBy('sde_inventory_number', 'asc')->get();
+        $equipamentos = Equipamento::select('sde_inventory_number', 'sde_serial_number')->orderBy('sde_inventory_number', 'asc')->get();
 
         if(count($relatorios) < 1) {
             return view('relatorios',[

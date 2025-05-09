@@ -24,7 +24,7 @@ class CreateController extends Controller
         $usuario = $request->input('usuario');
         $email = $request->input('email');
         $site = $request->input('site');
-        $perfil = $request->input('perfil');
+        $perfil = $request->input('perfil') ? : 'OPERAÇÃO';
         $senha = $request->input('senha');
         $status = 'ATIVADO';
         $created_by = session('usuario.nome');

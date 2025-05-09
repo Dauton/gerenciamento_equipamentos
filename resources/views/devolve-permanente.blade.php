@@ -101,13 +101,15 @@
                         <td>{{\Carbon\Carbon::parse($exibe->data_entrega)->format('d/m/Y - H:i')}}</td>
                         <td>{{$exibe->colaborador}}</td>
                         <td>
+                            @if(!empty($exibe->termo_responsabilidade))
                             <a href="{{$exibe->termo_responsabilidade}}" download>
                                 @if(str_ends_with($exibe->termo_responsabilidade, ".pdf"))
                                     <i class="fa-solid fa-file-pdf" id="btn-table-red"></i>
                                 @else
-                                    <i class="fa-solid fa-file-word" id="btn-table-blue"></i>
+                                    <i class="fa-solid fa-file-word" id="btn-table-blue-secondary"></i>
                                 @endif
                             </a>
+                            @endif
                         </td>
                     </tr>
                     @endforeach

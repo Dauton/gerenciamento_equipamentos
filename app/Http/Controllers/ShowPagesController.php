@@ -28,7 +28,7 @@ class ShowPagesController extends Controller
     {
         DadosCadastrosController::desativaColaboradorOnDate();
 
-        $equipamentos = Equipamento::select('sde_inventory_number')->where('sde_inventory_number', '!=', 0)->orderBy('sde_inventory_number', 'asc')->get();
+        $equipamentos = Equipamento::select('sde_inventory_number', 'sde_serial_number')->orderBy('sde_inventory_number', 'asc')->get();
         $colaboradores = SapiensController::listaColaboradores();
         $colaboradores_temporarios = Colaborador::where('site_colaborador', session('usuario.site'))->where('status', 'ATIVADO')->get();
         $turnos = Turno::all();
@@ -66,14 +66,14 @@ class ShowPagesController extends Controller
     {
         $relatorios = Relatorio::limit(0)->get();
         $sites = SapiensController::listaSites();
-        $equipamentos = Equipamento::select('sde_inventory_number')->where('sde_inventory_number', '!=', 0)->orderBy('sde_inventory_number', 'asc')->get();
+        $equipamentos = Equipamento::select('sde_inventory_number', 'sde_serial_number')->orderBy('sde_inventory_number', 'asc')->get();
         return view('relatorios', compact('relatorios', 'sites', 'equipamentos'));
     }
 
     // ENTREGA EQUIPAMENTO PERMANENTE PAGE
     public function entregaEquipamentoPermanentePage()
     {
-        $equipamentos = Equipamento::select('sde_inventory_number')->where('sde_inventory_number', '!=', 0)->orderBy('sde_inventory_number', 'asc')->get();
+        $equipamentos = Equipamento::select('sde_inventory_number', 'sde_serial_number')->orderBy('sde_inventory_number', 'asc')->get();
         $colaboradores = SapiensController::listaColaboradores();
         $turnos = Turno::all();
         $departamentos = Departamento::all();
@@ -111,7 +111,7 @@ class ShowPagesController extends Controller
     {
         $relatoriosPermanentes = Relatorio::limit(0)->get();
         $sites = SapiensController::listaSites();
-        $equipamentos = Equipamento::select('sde_inventory_number')->where('sde_inventory_number', '!=', 0)->orderBy('sde_inventory_number', 'asc')->get();
+        $equipamentos = Equipamento::select('sde_inventory_number', 'sde_serial_number')->orderBy('sde_inventory_number', 'asc')->get();
         $colaboradores = SapiensController::listaColaboradores();
         return view('relatorios-permanentes', compact('relatoriosPermanentes', 'sites', 'equipamentos', 'colaboradores'));
     }
@@ -158,7 +158,15 @@ class ShowPagesController extends Controller
     // USERS PAGE
     public function usuariosPage()
     {
-        $exibir = Usuario::all();
+        $perfil_usuario = session('usuario.perfil');
+        $site_usuario = session('usuario.site');
+
+        if($perfil_usuario === 'ADMIN') {
+            $exibir = Usuario::all();
+        } else {
+            $exibir = Usuario::where('site', $site_usuario)->get();
+        }
+
         $sites = SapiensController::listaSites();
         return view('usuarios', compact('exibir', 'sites'));
     }

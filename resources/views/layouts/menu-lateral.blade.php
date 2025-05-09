@@ -6,10 +6,10 @@
         <p>{{ session('usuario.nome') }} <br> {{ session('usuario.site') }}</p>
     </div>
     <ul>
-        @if (session('usuario.perfil') !== 'ADMIN')
+        @if (session('usuario.perfil') === 'OPERAÇÃO')
             <li><a href="{{ route('homepage') }}"><i class="fa-solid fa-handshake"></i>Entregar / Devolver</a></li>
             <li><a href="{{ route('relatorios') }}"><i class="fa-solid fa-magnifying-glass"></i>Relatórios</a></li>
-        @elseif(session('usuario.perfil') === 'ADMIN')
+        @elseif(session('usuario.perfil') !== 'OPERAÇÃO')
             <li class="menu-active-drop-01"><a><i class="fa-solid fa-handshake"></i>Entregar / Devolver</a></li>
             <ol class="menu-dropdown-01">
                 <li><a href="{{ route('homepage') }}"><i class="fa-solid fa-handshake"></i>Entrega temporária</a></li>
