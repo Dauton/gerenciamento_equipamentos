@@ -18,36 +18,32 @@ USE `gerenciamento_equipamentos`;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `equipamentos`
+-- Table structure for table `sessions`
 --
 
-DROP TABLE IF EXISTS `equipamentos`;
+DROP TABLE IF EXISTS `sessions`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `equipamentos` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `marca` varchar(100) NOT NULL,
-  `modelo` varchar(100) NOT NULL,
-  `serial` varchar(100) NOT NULL,
-  `patrimonio` varchar(100) NOT NULL,
-  `site_equipamento` varchar(100) NOT NULL,
-  `status` varchar(45) DEFAULT NULL,
-  `situacao` varchar(45) DEFAULT NULL,
-  `created_by` varchar(256) NOT NULL,
-  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+CREATE TABLE `sessions` (
+  `id` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `user_id` bigint unsigned DEFAULT NULL,
+  `ip_address` varchar(45) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `user_agent` text COLLATE utf8mb4_unicode_ci,
+  `payload` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `last_activity` int NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `sessions_user_id_index` (`user_id`),
+  KEY `sessions_last_activity_index` (`last_activity`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `equipamentos`
+-- Dumping data for table `sessions`
 --
 
-LOCK TABLES `equipamentos` WRITE;
-/*!40000 ALTER TABLE `equipamentos` DISABLE KEYS */;
-INSERT INTO `equipamentos` VALUES (1,'HONEYWELL','CK65','987654321','123456','CDARCEX','PRODUÇÃO','LIVRE','DAUTON PEREIRA FELIX','2025-04-16 14:13:31','2025-04-28 13:00:47'),(2,'HONEYWELL','CK65','09879812740','654321','CDARCEX','PRODUÇÃO','LIVRE','DAUTON PEREIRA FELIX','2025-04-22 16:52:57','2025-04-25 11:52:37'),(3,'HONEYWELL','CK65','98785975698760','456789','CDARCEX','PRODUÇÃO','EM USO','DAUTON PEREIRA FELIX','2025-04-22 16:53:30','2025-04-22 16:53:51'),(4,'LENOVO','THINKPAD E14','PE0B276N','848846','CDARCEX','PRODUÇÃO','LIVRE','DAUTON PEREIRA FELIX','2025-04-23 17:05:46','2025-04-24 19:01:32');
-/*!40000 ALTER TABLE `equipamentos` ENABLE KEYS */;
+LOCK TABLES `sessions` WRITE;
+/*!40000 ALTER TABLE `sessions` DISABLE KEYS */;
+/*!40000 ALTER TABLE `sessions` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -59,4 +55,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-05-10 14:50:50
+-- Dump completed on 2025-05-10 14:50:55

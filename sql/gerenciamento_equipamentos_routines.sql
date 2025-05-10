@@ -34,4 +34,4 @@ USE `gerenciamento_equipamentos`;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-04-15  8:15:52
+-- Dump completed on 2025-05-10 14:50:56
