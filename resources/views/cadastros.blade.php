@@ -28,7 +28,7 @@
                                 <td>{{$contagemUsuarios}} usuários</td>
                                 <td>{{$ultimoCadastroUsuario}}</td>
                                 <td>
-                                    <a href="{{route('usuarios')}}"><i class="fa-solid fa-file-circle-plus" id='btn-table-blue'></i></a>
+                                    <a href="{{route('create-usuario')}}"><i class="fa-solid fa-file-circle-plus" id='btn-table-blue'></i></a>
                                 </td>
                             </tr>
                             <!--
@@ -37,7 +37,7 @@
                                 <td>{{$contagemSites}} sites</td>
                                 <td>{{$ultimoCadastroSite}}</td>
                                 <td>
-                                    <a href="{{route('sites')}}"><i class="fa-solid fa-file-circle-plus" id='btn-table-blue'></i></a>
+                                    <a href="{{route('create-site')}}"><i class="fa-solid fa-file-circle-plus" id='btn-table-blue'></i></a>
                                 </td>
                             </tr>
                             -->
@@ -46,7 +46,7 @@
                                 <td>{{$contagemDepartamentos}} departamentos</td>
                                 <td>{{$ultimoCadastroDepartamento}}</td>
                                 <td>
-                                    <a href="{{route('departamentos')}}"><i class="fa-solid fa-file-circle-plus" id='btn-table-blue'></i></a>
+                                    <a href="{{route('create-departamento')}}"><i class="fa-solid fa-file-circle-plus" id='btn-table-blue'></i></a>
                                 </td>
                             </tr>
 
@@ -55,7 +55,7 @@
                                 <td>{{$contagemTurnos}} turnos</td>
                                 <td>{{$ultimoCadastroTurno}} </td>
                                 <td>
-                                    <a href="{{route('turnos')}}"><i class="fa-solid fa-file-circle-plus" id='btn-table-blue'></i></a>
+                                    <a href="{{route('create-turno')}}"><i class="fa-solid fa-file-circle-plus" id='btn-table-blue'></i></a>
                                 </td>
                             </tr>
                             <!--
@@ -64,7 +64,7 @@
                                 <td>$contagemEquipamentos equipamentos</td>
                                 <td>$ultimoCadastroEquipamento</td>
                                 <td>
-                                    <a href="{{route('equipamentos')}}"><i class="fa-solid fa-file-circle-plus" id='btn-table-blue'></i></a>
+                                    <a href="{{route('create-equipamento')}}"><i class="fa-solid fa-file-circle-plus" id='btn-table-blue'></i></a>
                                 </td>
                             </tr>
                             -->
@@ -73,7 +73,7 @@
                                 <td>{{$contagemAvarias}} avarias</td>
                                 <td>{{$ultimoCadastroAvaria}}</td>
                                 <td>
-                                    <a href="{{route('avarias')}}"><i class="fa-solid fa-file-circle-plus" id='btn-table-blue'></i></a>
+                                    <a href="{{route('create-avaria')}}"><i class="fa-solid fa-file-circle-plus" id='btn-table-blue'></i></a>
                                 </td>
                             </tr>
 
@@ -82,7 +82,7 @@
                                 <td>{{$contagemColaboradores}} colaboradores</td>
                                 <td>{{$ultimoCadastroColaborador}}</td>
                                 <td>
-                                    <a href="{{route('colaboradores')}}"><i class="fa-solid fa-file-circle-plus" id='btn-table-blue'></i></a>
+                                    <a href="{{route('create-colaborador')}}"><i class="fa-solid fa-file-circle-plus" id='btn-table-blue'></i></a>
                                 </td>
                             </tr>
 

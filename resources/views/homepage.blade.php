@@ -45,10 +45,12 @@
                     <i class="fa-solid fa-user-tag"></i>
                     <select name="colaborador" id="colaborador" class="select2">
                         <option value="" {{ old('colaborador') ? '' : 'selected' }}>Selecione o colaborador</option>
+
                         <option disabled>Efetivos</option>
                         @foreach ($colaboradores as $colaborador)
                             <option value="{{ $colaborador['usu_numcad'] . ' - ' . $colaborador['usu_nomfun'] }}" {{ old('colaborador') == $colaborador['usu_numcad'] . ' - ' . $colaborador['usu_nomfun'] ? 'selected' : '' }}>{{ $colaborador['usu_numcad'] . ' - ' . $colaborador['usu_nomfun'] }}</option>
                         @endforeach
+
                         <option disabled>Temporários</option>
                         @foreach ($colaboradores_temporarios as $colaborador)
                             <option value="{{ $colaborador->matricula_colaborador . ' - ' . $colaborador->nome_colaborador }}" {{ old('colaborador') == $colaborador->matricula_colaborador . ' - ' . $colaborador->nome_colaborador ? 'selected' : '' }}>{{ $colaborador->matricula_colaborador . ' - ' . $colaborador->nome_colaborador }}</option>
