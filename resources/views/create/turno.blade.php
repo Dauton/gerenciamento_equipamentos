@@ -4,24 +4,24 @@
     @include('layouts.menu-lateral')
     <section class="centro">
         <header class="cabecalho">
-            <h1 class="cabecalho-title"><a href="{{ route('homepage') }}">Homepage</a> / <a href="{{ route('cadastros') }}">Cadastros</a> / Departamentos</h1>
-            <i class="fa-solid fa-map-location-dot"></i>
+            <h1 class="cabecalho-title"><a href="{{ route('homepage') }}">Homepage</a> / <a href="{{ route('cadastros') }}">Cadastros</a> / Turnos</h1>
+            <i class="fa-solid fa-business-time"></i>
         </header>
         <article class="conteudo">
-            <form method="post" action="createDepartamento">
+            <form method="post" action="createTurno">
                 @csrf
 
-                <h1>Cadastro de departamento</h1>
+                <h1>Cadastro de turno</h1>
 
-                <label for="departamento"><p>Departamento<span> *</span></p>
+                <label for="turno"><p>Turno<span> *</span></p>
                     <div>
-                        <i class="fa-solid fa-briefcase"></i>
-                        <input type="text" name="departamento" id="departamento" placeholder="Complete com o nome do departamento" value="{{ old('departamento') }}">
+                        <i class="fa-solid fa-business-time"></i>
+                        <input type="text" name="turno" id="turno" placeholder="Complete com a descrição do turno" value="{{ old('turno') }}">
                     </div>
-                    @error('departamento')
+                    @error('turno')
                         <p id="input-error">{{ $message }}</p>
                         <style>
-                            label[for='departamento'] i {
+                            label[for='turno'] i {
                                 background: #b90000
                             }
                         </style>
@@ -37,13 +37,13 @@
 
             <section class="table-container">
 
-                <h1>Gerenciamento de departamentos</h1>
+                <h1>Gerenciamento de turnos</h1>
 
                 <table class="DataTable">
                     <thead>
                         <tr>
-                            <th>ID site</th>
-                            <th>Departamento</th>
+                            <th>ID turno</th>
+                            <th>Turno</th>
                             <th>Cadastrado por</th>
                             <th>Data cadastro</th>
                             <th>Gerenciar</th>
@@ -53,11 +53,11 @@
                             @foreach ($exibir as $exibe)
                             <tr>
                                 <td>{{ $exibe->id }}</td>
-                                <td>{{ $exibe->departamento }}</td>
+                                <td>{{ $exibe->turno }}</td>
                                 <td>{{ $exibe->created_by }}</td>
                                 <td>{{ date_format($exibe->created_at, 'd/m/Y - H:i') }}</td>
                                 <td>
-                                    <a href="update-departamento/{{Crypt::encrypt($exibe->id)}}"><i class="fa-solid fa-square-pen" id="btn-table-blue"></i></a>
+                                    <a href="{{route("update-turno", Crypt::encrypt($exibe->id))}}"><i class="fa-solid fa-square-pen" id="btn-table-blue"></i></a>
                                 </td>
                             </tr>
                             @endforeach

@@ -168,7 +168,7 @@ class ShowPagesController extends Controller
         }
 
         $sites = SapiensController::listaSites();
-        return view('usuarios', compact('exibir', 'sites'));
+        return view('create/usuario', compact('exibir', 'sites'));
     }
 
     // SITES PAGE
@@ -176,28 +176,28 @@ class ShowPagesController extends Controller
     {
 
         $exibir = Site::all();
-        return view('sites', compact('exibir'));
+        return view('create/site', compact('exibir'));
     }
 
     // AVARIAS PAGE
     public function avariasPage()
     {
         $exibir = Avaria::all();
-        return view('avarias', compact('exibir'));
+        return view('create/avaria', compact('exibir'));
     }
 
     // TURNOS PAGE
     public function turnosPage()
     {
         $exibir = Turno::all();
-        return view('turnos', compact('exibir'));
+        return view('create/turno', compact('exibir'));
     }
 
     // DEPARTAMENTOS PAGE
     public function departamentosPage()
     {
         $exibir = Departamento::all();
-        return view('departamentos', compact('exibir'));
+        return view('create/departamento', compact('exibir'));
     }
 
     // EQUIPAMENTOS PAGES
@@ -205,14 +205,14 @@ class ShowPagesController extends Controller
     {
         $exibir = Equipamento::all();
         $sites = SapiensController::listaSites();
-        return view('equipamentos', compact('exibir', 'sites'));
+        return view('create/equipamento', compact('exibir', 'sites'));
     }
 
     public function colaboradoresPage()
     {
         $colaboradores = Colaborador::all();
         $sites = SapiensController::listaSites();
-        return view('colaboradores', compact('colaboradores', 'sites'));
+        return view('create/colaborador', compact('colaboradores', 'sites'));
     }
 
     // _________________________________________________________________________________________________________________
@@ -228,7 +228,7 @@ class ShowPagesController extends Controller
         }
 
         $exibir = Usuario::where('id', $id)->first();
-        return view('update-senha', compact('exibir'));
+        return view('update/senha', compact('exibir'));
     }
 
     // UPDATE USER PAGE
@@ -242,7 +242,7 @@ class ShowPagesController extends Controller
 
         $exibir = Usuario::where('id', $id)->first();
         $sites = SapiensController::listaSites();
-        return view('update-usuario', compact('exibir', 'sites'));
+        return view('update/usuario', compact('exibir', 'sites'));
     }
 
     // UPDATE SITE PAGE
@@ -255,7 +255,7 @@ class ShowPagesController extends Controller
         }
 
         $exibir = Site::where('id', $id)->first();
-        return view('update-site', compact('exibir'));
+        return view('update/site', compact('exibir'));
     }
 
     // UPDATE AVARIA PAGE
@@ -268,7 +268,7 @@ class ShowPagesController extends Controller
         }
 
         $exibir = Avaria::where('id', $id)->first();
-        return view('update-avaria', compact('exibir'));
+        return view('update/avaria', compact('exibir'));
     }
 
     // UPDATE TURNO PAGE
@@ -281,7 +281,7 @@ class ShowPagesController extends Controller
         }
 
         $exibir = Turno::where('id', $id)->first();
-        return view('update-turno', compact('exibir'));
+        return view('update/turno', compact('exibir'));
     }
 
     // UPDATE DEPARTAMENTO PAGE
@@ -294,7 +294,7 @@ class ShowPagesController extends Controller
         }
 
         $exibir = Departamento::where('id', $id)->first();
-        return view('update-departamento', compact('exibir'));
+        return view('update/departamento', compact('exibir'));
     }
 
     // UPDATE EQUIPAMENTO PAGE
@@ -308,7 +308,7 @@ class ShowPagesController extends Controller
 
         $exibir = Equipamento::where('id', $id)->first();
         $sites = SapiensController::listaSites();
-        return view('update-equipamento', compact('exibir', 'sites'));
+        return view('update/equipamento', compact('exibir', 'sites'));
     }
 
     // UPDATE COLABORADOR PAGE
@@ -322,6 +322,6 @@ class ShowPagesController extends Controller
 
         $exibir = Colaborador::where('id', $id)->first();
         $sites = SapiensController::listaSites();
-        return view('update-colaborador', compact('exibir', 'sites'));
+        return view('update/colaborador', compact('exibir', 'sites'));
     }
 }

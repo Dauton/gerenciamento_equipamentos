@@ -21,21 +21,21 @@ Route::middleware([NaoEstaLogado::class])->group(function() {
 
         // SHOWPAGES ROUTE
         Route::get('/cadastros', [ShowPagesController::class, 'cadastrosPage'])->name('cadastros');
-        Route::get('/usuarios', [ShowPagesController::class, 'usuariosPage'])->name('usuarios');
-        Route::get('/sites', [ShowPagesController::class, 'sitesPage'])->name('sites');
-        Route::get('/avarias', [ShowPagesController::class, 'avariasPage'])->name('avarias');
-        Route::get('/turnos', [ShowPagesController::class, 'turnosPage'])->name('turnos');
-        Route::get('/departamentos', [ShowPagesController::class, 'departamentosPage'])->name('departamentos');
-        Route::get('/equipamentos', [ShowPagesController::class, 'equipamentosPage'])->name('equipamentos');
-        Route::get('/colaboradores', [ShowPagesController::class, 'colaboradoresPage'])->name('colaboradores');
+        Route::get('/create/usuario', [ShowPagesController::class, 'usuariosPage'])->name('usuarios');
+        Route::get('/create/site', [ShowPagesController::class, 'sitesPage'])->name('sites');
+        Route::get('/create/avaria', [ShowPagesController::class, 'avariasPage'])->name('avarias');
+        Route::get('/create/turno', [ShowPagesController::class, 'turnosPage'])->name('turnos');
+        Route::get('/create/departamento', [ShowPagesController::class, 'departamentosPage'])->name('departamentos');
+        Route::get('/create/equipamento', [ShowPagesController::class, 'equipamentosPage'])->name('equipamentos');
+        Route::get('/create/colaborador', [ShowPagesController::class, 'colaboradoresPage'])->name('colaboradores');
 
-        Route::get('/update-usuario/{id}', [ShowPagesController::class, 'updateUsuarioPage'])->name('update-usuario');
-        Route::get('/update-site/{id}', [ShowPagesController::class, 'updateSitePage'])->name('update-site');
-        Route::get('/update-avaria/{id}', [ShowPagesController::class, 'updateAvariaPage'])->name('update-avaria');
-        Route::get('/update-turno/{id}', [ShowPagesController::class, 'updateTurnoPage'])->name('update-turno');
-        Route::get('/update-departamento/{id}', [ShowPagesController::class, 'updateDepartamentoPage'])->name('update-departamento');
-        Route::get('/update-equipamento/{id}', [ShowPagesController::class, 'updateEquipamentoPage'])->name('update-equipamento');
-        Route::get('/update-colaborador/{id}', [ShowPagesController::class, 'updateColaboradorPage'])->name('update-colaborador');
+        Route::get('/update/usuario/{id}', [ShowPagesController::class, 'updateUsuarioPage'])->name('update-usuario');
+        Route::get('/update/site/{id}', [ShowPagesController::class, 'updateSitePage'])->name('update-site');
+        Route::get('/update/avaria/{id}', [ShowPagesController::class, 'updateAvariaPage'])->name('update-avaria');
+        Route::get('/update/turno/{id}', [ShowPagesController::class, 'updateTurnoPage'])->name('update-turno');
+        Route::get('/update/departamento/{id}', [ShowPagesController::class, 'updateDepartamentoPage'])->name('update-departamento');
+        Route::get('/update/equipamento/{id}', [ShowPagesController::class, 'updateEquipamentoPage'])->name('update-equipamento');
+        Route::get('/update/colaborador/{id}', [ShowPagesController::class, 'updateColaboradorPage'])->name('update-colaborador');
 
         Route::get('/entrega-permanente', [ShowPagesController::class, 'entregaEquipamentoPermanentePage'])->name('entrega-permanente');
         Route::get('/devolve-permanente/{id}', [ShowPagesController::class, 'devolveEquipamentoPermanentePage'])->name('devolve-permanente');
@@ -73,9 +73,9 @@ Route::middleware([NaoEstaLogado::class])->group(function() {
 
     // SHOWPAGES ROUTES
     Route::get('/homepage', [ShowPagesController::class, 'homepagePage'])->name('homepage');
-    Route::get('/update-senha/{id}', [ShowPagesController::class, 'updatePasswordPage'])->name('update-senha');
     Route::get('/devolve-equipamento/{id}', [ShowPagesController::class, 'devolveEquipamentoPage'])->name('devolve-equipamento');
     Route::get('/relatorios', [ShowPagesController::class, 'relatoriosPage'])->name('relatorios');
+    Route::get('/update/senha/{id}', [ShowPagesController::class, 'updatePasswordPage'])->name('update-senha');
 
     // EXECUÇÕES ROUTES
     Route::get('/logout', [AuthController::class, 'logout'])->name('logout');

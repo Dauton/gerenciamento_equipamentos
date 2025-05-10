@@ -144,7 +144,7 @@
                                 <td>{{$exibe->status}}</td>
                                 <td>{{ \Carbon\Carbon::parse($exibe->created_at)->format('d/m/Y - H:i') }}</td>
                                 <td>
-                                    <a href="update-equipamento/{{Crypt::encrypt($exibe->id)}}"><i class="fa-solid fa-square-pen" id="btn-table-blue"></i></a>
+                                    <a href="{{route("update-equipamento", Crypt::encrypt($exibe->id))}}"><i class="fa-solid fa-square-pen" id="btn-table-blue"></i></a>
                                 </td>
                             </tr>
                         @endforeach

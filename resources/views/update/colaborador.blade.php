@@ -14,8 +14,8 @@
                 <h1>Edição de colaborador temporário</h1>
 
                 <h5>
-                    Para ativar, informe uma data posterior à de hoje.<br>
-                    Para desativar, informe uma data anterior ou igual à de hoje.
+                    Para ativar, informe uma data posterior à data de hoje.<br>
+                    Para desativar, informe uma data igual ou anterior à data de hoje.
                 </h5>
 
                 <label for="nome_colaborador"><p>Nome<span> *</span></p>

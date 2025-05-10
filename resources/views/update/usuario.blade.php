@@ -108,7 +108,7 @@
         @include('layouts.rodape')
     </section>
     <div id="float-buttons">
-        <a href="/update-senha/{{ Crypt::encrypt($exibir->id) }}"><button type="button" id="float-button"><i class="fa-solid fa-key"></i></button></a>
+        <a href="{{route("update-senha", Crypt::encrypt($exibir->id)) }}"><button type="button" id="float-button"><i class="fa-solid fa-key"></i></button></a>
         <a><button type="button" id="float-button" class="float-button-red"><i class="fa-solid fa-trash"></i></button></a>
     </div>
     @section('executa-confirmacao')
