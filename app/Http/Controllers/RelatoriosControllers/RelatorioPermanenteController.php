@@ -41,7 +41,7 @@ class RelatorioPermanenteController extends Controller
         // VERIFICA SE O EQUIPAMENTO ESTÁ LIVRE
         $verifica_disponibilidade = RelatorioPermanente::where('equipamento', $equipamento)->where('data_devolucao', null)->first();
         if (!empty($verifica_disponibilidade)) {
-            return redirect('entrega-permanente')->withInput()->with('alertError', 'Esse equipamento já foi entregue a um colaborador.');
+            return redirect(route('entrega-permanente'))->withInput()->with('alertError', 'Esse equipamento já foi entregue a um colaborador.');
         }
 
         RelatorioPermanente::insert([
@@ -54,7 +54,7 @@ class RelatorioPermanenteController extends Controller
             'termo_responsabilidade' => $arquivo_gravado
         ]);
 
-        return redirect('entrega-permanente')->with('alertSuccess', "Equipamento entregue para $colaborador.");
+        return redirect(route('entrega-permanente'))->with('alertSuccess', "Equipamento entregue para $colaborador.");
     }
 
 
@@ -90,7 +90,7 @@ class RelatorioPermanenteController extends Controller
             'foto_avaria' => $arquivo_gravado
         ]);
 
-        return redirect('entrega-permanente')->with('alertSuccess', "Equipamento devolvido com sucesso.");
+        return redirect(route("entrega-permanente"))->with('alertSuccess', "Equipamento devolvido com sucesso.");
     }
 
     // BUSCA RELATÓRIOS DE ENTREGAS PERMANENTES

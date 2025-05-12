@@ -18,7 +18,7 @@ class CheckPerfil
 
         // BLOQUEIA ACESSO AS PÁGINAS CASO O PERFIL DO USUÁRIO LOGADO SEJA IGUAL A 'OPERAÇÃO'
         if(session('usuario.perfil') === 'OPERAÇÃO') {
-            return redirect('homepage')->with('alertError', 'Ops! você não tem premissão para acessar essa página ou realizar essa tarefa.');
+            return redirect(route('homepage'))->with('alertError', 'Ops! você não tem premissão para acessar essa página ou realizar essa tarefa.');
         }
 
         return $next($request);

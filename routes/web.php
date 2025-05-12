@@ -35,17 +35,17 @@ Route::middleware([NaoEstaLogado::class])->group(function () {
         Route::get('/colaboradores/create', [ShowPagesController::class, 'colaboradoresPage'])->name('create-colaborador');
 
         //EDITS
-        Route::get('/usuarios/edit/{id}', [ShowPagesController::class, 'updateUsuarioPage'])->name('edit-usuario');
-        Route::get('/sites/edit/{id}', [ShowPagesController::class, 'updateSitePage'])->name('edit-site');
-        Route::get('/avarias/edit/{id}', [ShowPagesController::class, 'updateAvariaPage'])->name('edit-avaria');
-        Route::get('/turnos/edit/{id}', [ShowPagesController::class, 'updateTurnoPage'])->name('edit-turno');
-        Route::get('/departamentos/edit/{id}', [ShowPagesController::class, 'updateDepartamentoPage'])->name('edit-departamento');
-        Route::get('/equipamentos/edit/{id}', [ShowPagesController::class, 'updateEquipamentoPage'])->name('edit-equipamento');
-        Route::get('/colaborador/edit/{id}', [ShowPagesController::class, 'updateColaboradorPage'])->name('edit-colaborador');
+        Route::get('/usuarios/edit/{id}', [ShowPagesController::class, 'editUsuarioPage'])->name('edit-usuario');
+        Route::get('/sites/edit/{id}', [ShowPagesController::class, 'editSitePage'])->name('edit-site');
+        Route::get('/avarias/edit/{id}', [ShowPagesController::class, 'editAvariaPage'])->name('edit-avaria');
+        Route::get('/turnos/edit/{id}', [ShowPagesController::class, 'editTurnoPage'])->name('edit-turno');
+        Route::get('/departamentos/edit/{id}', [ShowPagesController::class, 'editDepartamentoPage'])->name('edit-departamento');
+        Route::get('/equipamentos/edit/{id}', [ShowPagesController::class, 'editEquipamentoPage'])->name('edit-equipamento');
+        Route::get('/colaborador/edit/{id}', [ShowPagesController::class, 'editColaboradorPage'])->name('edit-colaborador');
 
         // ENTREGAS, DEVOLUÇÕES E RELATORIOS
-        Route::get('/entrega-permanente', [ShowPagesController::class, 'entregaEquipamentoPermanentePage'])->name('entrega-permanente');
-        Route::get('/devolve-permanente/{id}', [ShowPagesController::class, 'devolveEquipamentoPermanentePage'])->name('devolve-permanente');
+        Route::get('/entregas/entrega-permanente', [ShowPagesController::class, 'entregaEquipamentoPermanentePage'])->name('entrega-permanente');
+        Route::get('/entregas/devolve-permanente/{id}', [ShowPagesController::class, 'devolveEquipamentoPermanentePage'])->name('devolve-permanente');
         Route::get('/relatorios/permanentes', [ShowPagesController::class, 'relatoriosPermanentesPage'])->name('relatorios-permanentes');
 
 
@@ -60,13 +60,13 @@ Route::middleware([NaoEstaLogado::class])->group(function () {
         Route::post('/createColaborador', [ColaboradoresController::class, 'createColaborador'])->name('createColaborador');
 
         // EDITS
-        Route::post('/updateUser/{id}', [UsuariosController::class, 'updateUser'])->name('updateUser');
-        Route::post('/updateSite/{id}', [SitesController::class, 'updateSite'])->name('updateSite');
-        Route::post('/updateAvaria/{id}', [AvariasController::class, 'updateAvaria'])->name('updateAvaria');
-        Route::post('/updateTurno/{id}', [TurnosController::class, 'updateTurno'])->name('updateTurno');
-        Route::post('/updateDepartamento/{id}', [DepartamentosController::class, 'updateDepartamento'])->name('updateDepartamento');
-        Route::post('/updateEquipamento/{id}', [EquipamentosController::class, 'updateEquipamento'])->name('updateEquipamento');
-        Route::post('/updateColaborador/{id}', [ColaboradoresController::class, 'updateColaborador'])->name('updateColaborador');
+        Route::post('/editUser/{id}', [UsuariosController::class, 'editUser'])->name('editUser');
+        Route::post('/editSite/{id}', [SitesController::class, 'editSite'])->name('editSite');
+        Route::post('/editAvaria/{id}', [AvariasController::class, 'editAvaria'])->name('editAvaria');
+        Route::post('/editTurno/{id}', [TurnosController::class, 'editTurno'])->name('editTurno');
+        Route::post('/editDepartamento/{id}', [DepartamentosController::class, 'editDepartamento'])->name('editDepartamento');
+        Route::post('/editEquipamento/{id}', [EquipamentosController::class, 'editEquipamento'])->name('editEquipamento');
+        Route::post('/editColaborador/{id}', [ColaboradoresController::class, 'editColaborador'])->name('editColaborador');
 
         // DELETES
         Route::get('/deleteUsuario/{id}', [UsuariosController::class, 'deleteUsuario'])->name('deleteUsuario');
@@ -84,14 +84,14 @@ Route::middleware([NaoEstaLogado::class])->group(function () {
     });
 
     // SHOWPAGES ROUTES
-    Route::get('/homepage', [ShowPagesController::class, 'homepagePage'])->name('homepage');
-    Route::get('/devolve-equipamento/{id}', [ShowPagesController::class, 'devolveEquipamentoPage'])->name('devolve-equipamento');
+    Route::get('/entregas/entrega-temporario', [ShowPagesController::class, 'entregaEquipamentoPage'])->name('homepage'); //HOMEPAGE
+    Route::get('/entregas/devolve-temporario/{id}', [ShowPagesController::class, 'devolveEquipamentoPage'])->name('devolve-temporario');
     Route::get('/relatorios/temporarias', [ShowPagesController::class, 'relatoriosPage'])->name('relatorios-temporarias');
-    Route::get('/senha/edit/{id}', [ShowPagesController::class, 'updatePasswordPage'])->name('edit-senha');
+    Route::get('/senha/edit/{id}', [ShowPagesController::class, 'editPasswordPage'])->name('edit-senha');
 
     // EXECUÇÕES ROUTES
     Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
-    Route::post('/updateSenha/{id}', [SenhaController::class, 'updateSenha'])->name('updateSenha');
+    Route::post('/editSenha/{id}', [SenhaController::class, 'editSenha'])->name('editSenha');
     Route::post('/entregaEquipamento', [RelatorioController::class, 'entregaEquipamento'])->name('entregaEquipamento');
     Route::post('/devolveEquipamento/{id}', [RelatorioController::class, 'devolveEquipamento'])->name('devolveEquipamento');
     Route::post('/buscaRelatorio', [RelatorioController::class, 'buscaRelatorio'])->name('buscaRelatorio');

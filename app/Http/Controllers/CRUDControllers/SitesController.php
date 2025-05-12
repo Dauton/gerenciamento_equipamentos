@@ -30,7 +30,7 @@ class SitesController extends Controller
     }
 
     // EDIÇÃO DE SITE
-    public function updateSite(Request $request, $id)
+    public function editSite(Request $request, $id)
     {
         // VALIDAÇÃO DOS CAMPOS
         InputValidationsController::validationsUpdateSite($request, $id);

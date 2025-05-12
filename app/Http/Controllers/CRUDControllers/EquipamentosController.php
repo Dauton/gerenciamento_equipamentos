@@ -41,7 +41,7 @@ class EquipamentosController extends Controller
     }
 
     // EDIÇÃO EQUIPAMENTO
-    public function updateEquipamento(Request $request, $id)
+    public function editEquipamento(Request $request, $id)
     {
         // VALIDAÇÃO DOS CAMPOS
         InputValidationsController::validationsUpdateEquipamento($request, $id);

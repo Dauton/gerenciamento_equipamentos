@@ -29,7 +29,7 @@ class DepartamentosController extends Controller
     }
 
     // EDIÇÃO DEPARTAMENTO
-    public function updateDepartamento(Request $request, $id)
+    public function editDepartamento(Request $request, $id)
     {
         // VALIDAÇÃO DOS CAMPOS
         InputValidationsController::validationsUpdateDepartamento($request, $id);

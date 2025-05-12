@@ -27,7 +27,7 @@ class ShowPagesController extends Controller
     }
 
     // HOMEPAGE PAGE
-    public function homepagePage()
+    public function entregaEquipamentoPage()
     {
         DadosCadastrosController::desativaColaboradorOnDate();
 
@@ -38,7 +38,7 @@ class ShowPagesController extends Controller
         $departamentos = Departamento::all();
         $relatorios = Relatorio::where('data_devolucao', null)->where('site', session('usuario.site'))->get();
         return view(
-            'homepage',
+            'entregas/entrega-temporario',
             compact('equipamentos', 'colaboradores', 'colaboradores_temporarios', 'turnos', 'departamentos', 'relatorios')
         );
     }
@@ -61,7 +61,7 @@ class ShowPagesController extends Controller
             return redirect()->back()->with('alertError', 'Esse equipamento já foi devolvido.');
         }
 
-        return view('devolve-equipamento', compact('idRelatorio', 'exibir', 'avarias'));
+        return view('entregas/devolve-temporario', compact('idRelatorio', 'exibir', 'avarias'));
     }
 
     // RELATORIOS PAGE
@@ -83,7 +83,7 @@ class ShowPagesController extends Controller
         $sites = SapiensController::listaSites();
         $relatoriosPermanentes = RelatorioPermanente::where('site', session('usuario.site'))->where('data_devolucao', null)->get();
         return view(
-            'entrega-permanente',
+            'entregas/entrega-permanente',
             compact('equipamentos', 'colaboradores', 'turnos', 'departamentos', 'sites', 'relatoriosPermanentes')
         );
     }
@@ -106,7 +106,7 @@ class ShowPagesController extends Controller
             return redirect()->back()->with('alertError', 'Esse equipamento já foi devolvido.');
         }
 
-        return view('devolve-permanente', compact('idRelatorio', 'exibir', 'avarias'));
+        return view('entregas/devolve-permanente', compact('idRelatorio', 'exibir', 'avarias'));
     }
 
     // RELATORIOS DE ENTREGAS PERMANENTES PAGE
@@ -221,8 +221,8 @@ class ShowPagesController extends Controller
     // _________________________________________________________________________________________________________________
 
 
-    // UPDATE PASSWORD USER PAGE
-    public function updatePasswordPage($id)
+    // EDIT PASSWORD USER PAGE
+    public function editPasswordPage($id)
     {
         try {
             $id = Crypt::decrypt($id);
@@ -234,8 +234,8 @@ class ShowPagesController extends Controller
         return view('senhas/edit', compact('exibir'));
     }
 
-    // UPDATE USER PAGE
-    public function updateUsuarioPage($id)
+    // EDIT USER PAGE
+    public function editUsuarioPage($id)
     {
         try {
             $id = Crypt::decrypt($id);
@@ -248,8 +248,8 @@ class ShowPagesController extends Controller
         return view('usuarios/edit', compact('exibir', 'sites'));
     }
 
-    // UPDATE SITE PAGE
-    public function updateSitePage($id)
+    // EDIT SITE PAGE
+    public function editSitePage($id)
     {
         try {
             $id = Crypt::decrypt($id);
@@ -261,8 +261,8 @@ class ShowPagesController extends Controller
         return view('sites/edit', compact('exibir'));
     }
 
-    // UPDATE AVARIA PAGE
-    public function updateAvariaPage($id)
+    // EDIT AVARIA PAGE
+    public function editAvariaPage($id)
     {
         try {
             $id = Crypt::decrypt($id);
@@ -274,8 +274,8 @@ class ShowPagesController extends Controller
         return view('avarias/edit', compact('exibir'));
     }
 
-    // UPDATE TURNO PAGE
-    public function updateTurnoPage($id)
+    // EDIT TURNO PAGE
+    public function editTurnoPage($id)
     {
         try {
             $id = Crypt::decrypt($id);
@@ -287,8 +287,8 @@ class ShowPagesController extends Controller
         return view('turnos/edit', compact('exibir'));
     }
 
-    // UPDATE DEPARTAMENTO PAGE
-    public function updateDepartamentoPage($id)
+    // EDIT DEPARTAMENTO PAGE
+    public function editDepartamentoPage($id)
     {
         try {
             $id = Crypt::decrypt($id);
@@ -300,8 +300,8 @@ class ShowPagesController extends Controller
         return view('departamentos/edit', compact('exibir'));
     }
 
-    // UPDATE EQUIPAMENTO PAGE
-    public function updateEquipamentoPage($id)
+    // EDIT EQUIPAMENTO PAGE
+    public function editEquipamentoPage($id)
     {
         try {
             $id = Crypt::decrypt($id);
@@ -314,8 +314,8 @@ class ShowPagesController extends Controller
         return view('equipamentos/edit', compact('exibir', 'sites'));
     }
 
-    // UPDATE COLABORADOR PAGE
-    public function updateColaboradorPage($id)
+    // EDIT COLABORADOR PAGE
+    public function editColaboradorPage($id)
     {
         try {
             $id = Crypt::decrypt($id);

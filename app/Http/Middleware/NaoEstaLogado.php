@@ -17,7 +17,7 @@ class NaoEstaLogado
     {
         // BLOQUEIA ACESSO SE NÃO ESTIVER LOGADO
         if(!session('usuario')) {
-            return redirect('/')->with('loginError', 'Realize o login para acessar o sistema.');
+            return redirect(route('login'))->with('loginError', 'Realize o login para acessar o sistema.');
         }
 
         return $next($request);

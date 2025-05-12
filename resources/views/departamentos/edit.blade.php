@@ -8,7 +8,7 @@
             <i class="fa-solid fa-users-gear"></i>
         </header>
         <article class="conteudo">
-            <form method="post" action="{{ route("updateDepartamento", $exibir->id) }}">
+            <form method="post" action="{{ route("editDepartamento", $exibir->id) }}">
                 @csrf
 
                 <h1>Edição de departamento</h1>

@@ -17,7 +17,7 @@ class EstaLogado
     {
         // BLOQUEIA ACESSO SE ESTIVER LOGADO
         if(session('usuario')) {
-            return redirect('/homepage');
+            return redirect(route('homepage'))->with('alertInfo', 'Você já está logado.');
         }
 
         return $next($request);

@@ -30,7 +30,7 @@ class TurnosController extends Controller
     }
 
     // EDIÇÃO DE TURNO
-    public function updateTurno(Request $request, $id)
+    public function editTurno(Request $request, $id)
     {
         // VALIDAÇÃO DOS CAMPOS
         InputValidationsController::validationsUpdateTurno($request, $id);

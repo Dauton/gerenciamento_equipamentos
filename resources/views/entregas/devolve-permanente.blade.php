@@ -10,7 +10,7 @@
     </header>
     <article class="conteudo">
 
-        <form method="post" action="/devolveEquipamentoPermanente/{{ $idRelatorio->id }}" enctype="multipart/form-data">
+        <form method="post" action="{{ route("devolveEquipamentoPermanente", $idRelatorio->id) }}" enctype="multipart/form-data">
             @csrf
 
             <h1>Devolução de equipamento permanente</h1>

@@ -13,7 +13,7 @@ class SenhaController extends Controller
 {
 
     // EDIÇÃO DE SENHA
-    public function updateSenha(Request $request, $id)
+    public function editSenha(Request $request, $id)
     {
         try {
             $id = Crypt::decrypt($id);

@@ -8,7 +8,7 @@
         <i class="fa-solid fa-house"></i>
     </header>
     <article class="conteudo">
-        <form method="post" action="entregaEquipamento">
+        <form method="post" action="{{ route("entregaEquipamento") }}">
             @csrf
 
             <h1>Entrega de equipamento</h1>
@@ -176,7 +176,7 @@
                         <td>{{$exibe->departamento}}</td>
                         <td>{{$exibe->turno}}</td>
                         <td>
-                            <a href="devolve-equipamento/{{Crypt::encrypt($exibe->id)}}"><i class="fa-solid fa-circle-down" id="btn-table-blue"></i></a>
+                            <a href="{{route("devolve-temporario", Crypt::encrypt($exibe->id)) }}"><i class="fa-solid fa-circle-down" id="btn-table-blue"></i></a>
                         </td>
                     </tr>
                     @endforeach

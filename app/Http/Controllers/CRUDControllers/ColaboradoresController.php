@@ -35,7 +35,7 @@ class ColaboradoresController extends Controller
     }
 
     // EDIÇÃO DE COLABORADOR
-    public function updateColaborador(Request $request, $id)
+    public function editColaborador(Request $request, $id)
     {
         // VALIDAÇÕES DOS CAMPOS
         InputValidationsController::validationsUpdateColaborador($request, $id);

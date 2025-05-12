@@ -28,7 +28,7 @@ class RelatorioController extends Controller
         // VERIFICA SE O EQUIPAMENTO ESTÁ LIVRE
         $verifica_disponibilidade = Relatorio::where('equipamento', $equipamento)->where('data_devolucao', null )->first();
         if(!empty($verifica_disponibilidade)) {
-            return redirect('homepage')->with('alertError', 'Esse equipamento já está sendo utilizado ou não foi devolvido.');
+            return redirect(route('homepage'))->with('alertError', 'Esse equipamento já está sendo utilizado ou não foi devolvido.');
         }
 
         Relatorio::insert([
@@ -75,7 +75,7 @@ class RelatorioController extends Controller
             'foto_avaria' => $arquivo_gravado
         ]);
 
-        return redirect('homepage')->with('alertSuccess', "Equipamento devolvido com sucesso.");
+        return redirect(route('homepage'))->with('alertSuccess', "Equipamento devolvido com sucesso.");
     }
 
     // BUSCA RELATÓRIOS

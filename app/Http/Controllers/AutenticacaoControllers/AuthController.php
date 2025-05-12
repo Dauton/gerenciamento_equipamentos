@@ -46,7 +46,7 @@ class AuthController extends Controller
         $buscaUsuario->ultimo_login = date('Y-m-d H:i:s');
         $buscaUsuario->save();
 
-        return redirect(route('homepage'));
+        return redirect(route('homepage'))->with('alertSuccess', "Seja bem vindo(a), $buscaUsuario->nome");
     }
 
     // EXECUÇÃO DE LOGOUT
@@ -55,6 +55,6 @@ class AuthController extends Controller
         session()->invalidate();
         session()->regenerateToken();
 
-        return redirect('/')->with('alertSuccess', 'Você saiu do sistema com sucesso.');
+        return redirect(route('login'))->with('alertSuccess', 'Você saiu do sistema com sucesso.');
     }
 }

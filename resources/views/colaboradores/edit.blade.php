@@ -8,7 +8,7 @@
             <i class="fa-solid fa-users-gear"></i>
         </header>
         <article class="conteudo">
-            <form method="post" action="{{ route("updateColaborador", $exibir->id) }}">
+            <form method="post" action="{{ route("editColaborador", $exibir->id) }}">
                 @csrf
 
                 <h1>Edição de colaborador temporário</h1>

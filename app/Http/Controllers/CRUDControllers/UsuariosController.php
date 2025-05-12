@@ -42,7 +42,7 @@ class UsuariosController extends Controller
     }
 
     // EDIÇÃO DE USUÁRIO
-    public function updateUser(Request $request, $id)
+    public function editUser(Request $request, $id)
     {
 
         // VALIDAÇÃO DOS CAMPOS

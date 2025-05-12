@@ -8,7 +8,7 @@
             <i class="fa-solid fa-key"></i>
         </header>
         <article class="conteudo">
-            <form method="post" action="{{ route("updateSenha", Crypt::encrypt($exibir->id)) }}">
+            <form method="post" action="{{ route("editSenha", Crypt::encrypt($exibir->id)) }}">
                 @csrf
 
                 <h1>Reset de senha</h1>

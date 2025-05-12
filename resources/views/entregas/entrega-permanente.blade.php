@@ -8,7 +8,7 @@
         <i class="fa-solid fa-handshake-simple"></i>
     </header>
     <article class="conteudo">
-        <form method="post" action="entregaEquipamentoPermanente" enctype="multipart/form-data">
+        <form method="post" action="{{ route("entregaEquipamentoPermanente") }}" enctype="multipart/form-data">
             @csrf
 
             <h1>Entrega permanente de equipamento</h1>
@@ -138,7 +138,7 @@
 
             <div class="container-buttons">
                 <button type="submit">Entregar</button>
-                <a href="{{ route('entrega-permanente')}}"><button type="button" id="btn-cancelar">Cancelar</button></a>
+                <a href="{{ route('entrega-permanente') }}"><button type="button" id="btn-cancelar">Cancelar</button></a>
             </div>
         </form>
         <section class="table-container">
@@ -196,7 +196,7 @@
                         </td>
                         <td>
                             @if(empty($exibe->data_devolucao))
-                                <a href="/devolve-permanente/{{Crypt::encrypt($exibe->id)}}"><i class="fa-solid fa-circle-down" id="btn-table-blue"></i></a>
+                                <a href="{{ route("devolve-permanente", Crypt::encrypt($exibe->id)) }}"><i class="fa-solid fa-circle-down" id="btn-table-blue"></i></a>
                             @endif
                         </td>
                     </tr>

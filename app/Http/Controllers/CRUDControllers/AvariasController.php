@@ -31,7 +31,7 @@ class AvariasController extends Controller
     }
 
     // EDIÇÃO DE AVARIA
-    public function updateAvaria(Request $request, $id)
+    public function editAvaria(Request $request, $id)
     {
 
         // VALIDAÇÃO DOS CAMPOS
