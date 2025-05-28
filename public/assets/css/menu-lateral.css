@@ -38,13 +38,7 @@
     box-shadow: none;
 }
 .menu-lateral .usuario-info form select {
-    width: 100%;
     padding: 8px;
-    border: 1px solid #cdcdcd;
-    border-radius: 3px;
-    font-size: 10px;
-    color: #404040;
-    text-align: center;
 }
 .menu-lateral .usuario-info form .select2-selection {
     padding: 0 !important;

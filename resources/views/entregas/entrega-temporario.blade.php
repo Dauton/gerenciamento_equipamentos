@@ -145,7 +145,7 @@
 
             <div class="container-buttons">
                 <button type="submit">Entregar</button>
-                <a href="{{ route('homepage')}}"><button type="reset" id="btn-cancelar">Cancelar</button></a>
+                <a href="{{ route('homepage')}}"><button type="button" id="btn-cancelar">Cancelar</button></a>
             </div>
         </form>
 

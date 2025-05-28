@@ -32,7 +32,7 @@ form label div {
     justify-content: center;
     border-radius: 3px;
 }
-form label div input{
+form label div input {
     width: 100%;
     height: 100% !important;
     padding: 10px;
@@ -40,6 +40,15 @@ form label div input{
     border-radius: 0 3px 3px 0;
     font-size: 12px;
     background: #fff;
+}
+form select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #909090;
+    border-radius: 0 3px 3px 0;
+    font-size: 10px;
+    color: #404040;
+    text-align: center;
 }
 form label div input:focus,
 form label div select:focus {
@@ -63,6 +72,10 @@ form label div i {
 }
 .select2-selection:hover {
     background: #f1f1f1 !important;
+}
+
+.select2-search__field:focus {
+    outline-color: var(--tertiary-color);
 }
 .select2-results__option {
     font-size: 12px;

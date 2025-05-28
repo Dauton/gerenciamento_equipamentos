@@ -48,8 +48,8 @@
         @elseif(session('usuario.perfil') !== 'OPERAÇÃO')
             <li class="menu-active-drop-01"><a><i class="fa-solid fa-handshake"></i>Entregar / Devolver</a></li>
             <ol class="menu-dropdown-01">
-                <li><a href="{{ route('homepage') }}"><i class="fa-solid fa-handshake"></i>Entrega temporária</a></li>
-                <li><a href="{{ route('entrega-permanente') }}"><i class="fa-solid fa-handshake"></i>Entrega
+                <li><a href="{{ route('homepage') }}"><i class="fa-solid fa-hourglass-half"></i>Entrega temporária</a></li>
+                <li><a href="{{ route('entrega-permanente') }}"><i class="fa-solid fa-calendar-days"></i>Entrega
                         permanente</a></li>
             </ol>
 
@@ -71,4 +71,5 @@
         <img src="{{ asset('assets/img/id-logo-branco-extenso.png') }}" alt="logo-idl">
         <p>{{ now()->format('d/m/Y') }}
     </div>
+
 </nav>
