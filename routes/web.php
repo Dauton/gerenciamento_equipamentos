@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AutenticacaoControllers\AuthController;
+use App\Http\Controllers\ComponentesControllers\AlterarSiteController;
 use App\Http\Controllers\CRUDControllers\AvariasController;
 use App\Http\Controllers\CRUDControllers\ColaboradoresController;
 use App\Http\Controllers\CRUDControllers\DepartamentosController;
@@ -95,6 +96,7 @@ Route::middleware([NaoEstaLogado::class])->group(function () {
     Route::post('/entregaEquipamento', [RelatorioController::class, 'entregaEquipamento'])->name('entregaEquipamento');
     Route::post('/devolveEquipamento/{id}', [RelatorioController::class, 'devolveEquipamento'])->name('devolveEquipamento');
     Route::post('/buscaRelatorio', [RelatorioController::class, 'buscaRelatorio'])->name('buscaRelatorio');
+    Route::post('/alterarSite', [AlterarSiteController::class, 'alterarSiteSessao'])->name('alterarSite');
 });
 
 // O USUÁRIO ESTÁ LOGADO, BLOQUEIA ACESSO A:

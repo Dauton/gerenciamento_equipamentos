@@ -1,13 +1,11 @@
 $(document).ready(function () {
 
     // BIBLIOTECA Select2
-    $(window).on('load', function () {
-        $('.select2').select2(
-            {
-                language: "pt-BR"
-            }
-        );
-    });
+    $('.select2').select2(
+        {
+            language: "pt-BR"
+        }
+    );
 
     // BIBLIOTECA DataTables
     $('.DataTableExcel').DataTable({
@@ -113,64 +111,84 @@ $(document).ready(function () {
         $('.container-alert-confirmacao').fadeOut(100).css({ 'display': none });
     });
 
+    // AO SELECIONAR O COLABORADOR, AUTOMATICAMENTE OS CAMPOS DEPARTAMENTO E TURNO É PREENCHIDO
+    $('#colaborador').select2();
+
+    $('#colaborador').on('change', function () {
+        const departamento = $(this).find(':selected').data('departamento') || '';
+        $('#departamento').val(departamento);
+
+        const turno = $(this).find(':selected').data('turno') || '';
+        $('#turno').val(turno);
+    });
+
+    const initialDepartamento = $('#colaborador').find(':selected').data('departamento') || '';
+    $('#departamento').val(initialDepartamento);
+
+    const initialTurno = $('#colaborador').find(':selected').data('turno') || '';
+    $('#turno').val(initialTurno);
+
+    // MENSAGEM DE ALERTA SOME APÓS 5 SEGUNDOS
+    setTimeout(() => {
+        let p = document.getElementById("alert-result");
+        p.style.opacity = "0";
+
+        setTimeout(() => {
+            p.style.display = "none";
+        }, 3000);
+    }, 5000);
+
 });
 
-// MENSAGEM DE ALERTA SOME APÓS 5 SEGUNDOS
-setTimeout(() => {
-    let p = document.getElementById("alert-result");
-    p.style.opacity = "0";
 
-    setTimeout(() => {
-        p.style.display = "none";
-    }, 3000);
-}, 5000);
 
-document.getElementById("loginAmazon").addEventListener("input", convert);
 
-function convert() {
-    var loginAmazon = document.getElementById("loginAmazon").value;
+// document.getElementById("loginAmazon").addEventListener("input", convert);
 
-    if (!loginAmazon || Number(loginAmazon) < 0) {
-        document.getElementById("loginAmazonConvertido").value = "000,00000000000000000000000";
-        return;
-    }
+// function convert() {
+//     var loginAmazon = document.getElementById("loginAmazon").value;
 
-    var abatrackHexa = Number(loginAmazon).toString(16);
-    if (abatrackHexa.length == 5) {
-        abatrackHexa = "0" + abatrackHexa;
-    }
-    var abaLength = abatrackHexa.length;
-    var abatrackLast4 = abatrackHexa.substring(abaLength - 4);
-    var abatrackRest = abatrackHexa.substring(abaLength - 6, abaLength - 4);
-    var numberOfZeros = 0;
-    for (var i = 0; i < abatrackLast4.length; i++) {
-        if (abatrackLast4.charAt(i) == '0'  ) {
-            numberOfZeros++;
-        } else {
-            break;
-        }
-    }
-    var wiegandEnd = parseInt(abatrackLast4, 16);
-    if (wiegandEnd.toString().length < 5 && numberOfZeros == 0) {
-        numberOfZeros += 5 - wiegandEnd.toString().length;
-    }
-    var wiegandBegin = parseInt(abatrackRest, 16);
-    var wiegandEndZeros = "";
-    for (var i = 0; i < numberOfZeros; i++) {
-        wiegandEndZeros += "0";
-    }
-    var wiegandString = wiegandBegin.toString().padStart(3, '0') + "," + wiegandEndZeros + wiegandEnd.toString().padStart(5, '0');
+//     if (!loginAmazon || Number(loginAmazon) < 0) {
+//         document.getElementById("loginAmazonConvertido").value = "000,00000000000000000000000";
+//         return;
+//     }
 
-    var facilityCode = wiegandString.slice(0, 3);
-    var digitsAfterComma = wiegandString.slice(4);
+//     var abatrackHexa = Number(loginAmazon).toString(16);
+//     if (abatrackHexa.length == 5) {
+//         abatrackHexa = "0" + abatrackHexa;
+//     }
+//     var abaLength = abatrackHexa.length;
+//     var abatrackLast4 = abatrackHexa.substring(abaLength - 4);
+//     var abatrackRest = abatrackHexa.substring(abaLength - 6, abaLength - 4);
+//     var numberOfZeros = 0;
+//     for (var i = 0; i < abatrackLast4.length; i++) {
+//         if (abatrackLast4.charAt(i) == '0'  ) {
+//             numberOfZeros++;
+//         } else {
+//             break;
+//         }
+//     }
+//     var wiegandEnd = parseInt(abatrackLast4, 16);
+//     if (wiegandEnd.toString().length < 5 && numberOfZeros == 0) {
+//         numberOfZeros += 5 - wiegandEnd.toString().length;
+//     }
+//     var wiegandBegin = parseInt(abatrackRest, 16);
+//     var wiegandEndZeros = "";
+//     for (var i = 0; i < numberOfZeros; i++) {
+//         wiegandEndZeros += "0";
+//     }
+//     var wiegandString = wiegandBegin.toString().padStart(3, '0') + "," + wiegandEndZeros + wiegandEnd.toString().padStart(5, '0');
 
-    var facilityCodeHex = parseInt(facilityCode).toString(16).toUpperCase();
-    var digitsAfterCommaHex = parseInt(digitsAfterComma).toString(16).toUpperCase();
+//     var facilityCode = wiegandString.slice(0, 3);
+//     var digitsAfterComma = wiegandString.slice(4);
 
-    var hexaString = facilityCodeHex.padStart(4, '0') + digitsAfterCommaHex.padStart(4, '0');
-    var decimalString = parseInt(hexaString, 16).toString().padStart(10, '0');
+//     var facilityCodeHex = parseInt(facilityCode).toString(16).toUpperCase();
+//     var digitsAfterCommaHex = parseInt(digitsAfterComma).toString(16).toUpperCase();
 
-    // Exibir no input convertido
-    var finalResult = wiegandString + decimalString;
-    document.getElementById("loginAmazonConvertido").value = finalResult;
-}
+//     var hexaString = facilityCodeHex.padStart(4, '0') + digitsAfterCommaHex.padStart(4, '0');
+//     var decimalString = parseInt(hexaString, 16).toString().padStart(10, '0');
+
+//     // Exibir no input convertido
+//     var finalResult = wiegandString + decimalString;
+//     document.getElementById("loginAmazonConvertido").value = finalResult;
+// }

@@ -25,12 +25,22 @@ class SapiensController extends Controller
         // usu_numcad = matrícula
         // usu_nomfun = nome
         // usu_tcadfun = tabela
-        // usu_dessit = status[ativo, demitido, ferias etc...]
-        $stmt = self::sapiensConn()->prepare("SELECT DISTINCT usu_numcad, usu_nomfun FROM usu_tcadfun WHERE usu_dessit = ? AND usu_nomfil = ? ORDER BY usu_nomfun");
+        // usu_dessup = turno
+        // usu_dessit = situacao[ativo, demitido, ferias etc...]
+
+        $sql = "SELECT DISTINCT funcionarios.usu_numcad, funcionarios.usu_nomfun, funcionarios.usu_dessup, CONVERT(NVARCHAR(100), departamentos.usu_secao) AS usu_secao
+                FROM usu_tmotor departamentos
+                JOIN usu_tcadfun funcionarios
+                ON departamentos.usu_matfun = funcionarios.usu_numcad
+                WHERE departamentos.usu_nomfun != ''
+                AND funcionarios.usu_dessit = ?
+                AND funcionarios.usu_nomfil = ?";
+
+        $stmt = self::sapiensConn()->prepare($sql);
         $stmt->bindValue(1, 'Ativo');
         $stmt->bindValue(2, session('usuario.site'));
         $stmt->execute();
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return mb_convert_encoding($stmt->fetchAll(PDO::FETCH_ASSOC), 'UTF-8', 'ISO-8859-1');
     }
 
     // LISTAGEM DE SITES VIA SAPIENS
@@ -40,6 +50,6 @@ class SapiensController extends Controller
         // usu_tcadfun = tabela
         $stmt = self::sapiensConn()->prepare("SELECT DISTINCT usu_nomfil FROM usu_tcadfun WHERE usu_nomfil != '' ORDER BY usu_nomfil");
         $stmt->execute();
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return mb_convert_encoding($stmt->fetchAll(PDO::FETCH_ASSOC), 'UTF-8', 'ISO-8859-1');
     }
 }

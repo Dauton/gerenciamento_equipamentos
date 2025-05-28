@@ -27,11 +27,9 @@ class ShowPagesController extends Controller
     }
 
     // HOMEPAGE PAGE
-    public function entregaEquipamentoPage()
+    public function entregaEquipamentoPage()// HOMEPAGE
     {
-        DadosCadastrosController::desativaColaboradorOnDate();
-
-        $equipamentos = Equipamento::select('sde_inventory_number', 'sde_serial_number')->orderBy('sde_inventory_number', 'asc')->get();
+        $equipamentos = Equipamento::listaEquipamentos();
         $colaboradores = SapiensController::listaColaboradores();
         $colaboradores_temporarios = Colaborador::where('site_colaborador', session('usuario.site'))->where('status', 'ATIVADO')->get();
         $turnos = Turno::all();
@@ -69,14 +67,14 @@ class ShowPagesController extends Controller
     {
         $relatorios = Relatorio::limit(0)->get();
         $sites = SapiensController::listaSites();
-        $equipamentos = Equipamento::select('sde_inventory_number', 'sde_serial_number')->orderBy('sde_inventory_number', 'asc')->get();
+        $equipamentos = Equipamento::listaEquipamentos();
         return view('relatorios/temporarias', compact('relatorios', 'sites', 'equipamentos'));
     }
 
     // ENTREGA EQUIPAMENTO PERMANENTE PAGE
     public function entregaEquipamentoPermanentePage()
     {
-        $equipamentos = Equipamento::select('sde_inventory_number', 'sde_serial_number')->orderBy('sde_inventory_number', 'asc')->get();
+        $equipamentos = Equipamento::listaEquipamentos();
         $colaboradores = SapiensController::listaColaboradores();
         $turnos = Turno::all();
         $departamentos = Departamento::all();
@@ -114,7 +112,7 @@ class ShowPagesController extends Controller
     {
         $relatoriosPermanentes = Relatorio::limit(0)->get();
         $sites = SapiensController::listaSites();
-        $equipamentos = Equipamento::select('sde_inventory_number', 'sde_serial_number')->orderBy('sde_inventory_number', 'asc')->get();
+        $equipamentos = Equipamento::listaEquipamentos();
         $colaboradores = SapiensController::listaColaboradores();
         return view('relatorios/permanentes', compact('relatoriosPermanentes', 'sites', 'equipamentos', 'colaboradores'));
     }

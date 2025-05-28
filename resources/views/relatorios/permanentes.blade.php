@@ -1,7 +1,6 @@
 @extends('layouts.content')
 
 @section('content')
-    @include('layouts.menu-lateral')
 
     <section class="centro">
         <header class="cabecalho">
@@ -16,7 +15,7 @@
 
                 <h1>Busca de relatório de entregas permanentes.</h1>
 
-                <h5>Para obter todos os dados, deixe os campos em branco.</h5>
+                <h5>Para obter todos os dados do seu site, deixe os campos em branco.</h5>
 
                 <label for="site">
                     <p>Site</p>
@@ -40,14 +39,14 @@
                 </label>
 
                 <label for="equipamento">
-                    <p>Equipamento</p>
+                    <p>Equipamento<span> *</span></p>
                     <div>
                         <i class="fa-solid fa-microchip"></i>
                         <select name="equipamento" id="equipamento" class="select2">
                             <option value="" {{ old('equipamento') ? '' : 'selected' }}>Selecione o equipamento</option>
                             @foreach ($equipamentos as $equipamento)
                                 @php
-                                    $valor = 'PAT ' . $equipamento->sde_inventory_number . ' - SN ' . $equipamento->sde_serial_number;
+                                    $valor = $equipamento->nome_tipo . ' - PAT ' . $equipamento->patrimonio . ' - SN ' . $equipamento->serialnumber;
                                 @endphp
                                 <option value="{{ $valor }}" {{ old('equipamento') == $valor ? 'selected' : '' }}>
                                     {{ $valor }}

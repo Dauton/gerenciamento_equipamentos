@@ -56,8 +56,11 @@
     color: #404040;
     font-size: 13px;
 }
+.alert-confirmacao h1 {
+    font-weight: bold;
+}
 .alert-confirmacao i {
     margin: 0 0 10px 0;
     font-size: 70px;
-    color: #4ed84e;
+    color: gold;;
 }

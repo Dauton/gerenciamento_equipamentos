@@ -37,6 +37,10 @@
     background: #eaf5ff;
     border: none !important;
 }
+#login-form label input:focus {
+    background: transparent !important
+}
+
 #login-form label i {
     min-width: 40px;
     font-size: 13px;

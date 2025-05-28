@@ -13,7 +13,7 @@
 
 .menu-lateral .usuario-info {
     width: 100%;
-    margin: 0 0 30px 0;
+    margin: 0 0 20px 0;
     padding: 10px;
     display: flex;
     align-items: center;
@@ -26,12 +26,36 @@
 
 .menu-lateral .usuario-info i {
     margin-bottom: 10px;
-    font-size: 50px;
+    font-size: 40px;
     color: var(--tertiary-color);
 }
 .menu-lateral .usuario-info p {
     font-size: 13px;
 }
+.menu-lateral .usuario-info form {
+    margin: 10px 0 0 0;
+    padding: 0;
+    box-shadow: none;
+}
+.menu-lateral .usuario-info form select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #cdcdcd;
+    border-radius: 3px;
+    font-size: 10px;
+    color: #404040;
+    text-align: center;
+}
+.menu-lateral .usuario-info form .select2-selection {
+    padding: 0 !important;
+}
+.menu-lateral .usuario-info form button {
+    width: 100%;
+    margin: 0 auto;
+    padding: 7px;
+    font-size: 10px;
+}
+
 .menu-lateral ul {
     list-style: none;
     display: flex;

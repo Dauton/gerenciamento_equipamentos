@@ -21,7 +21,7 @@ class UsuariosController extends Controller
         $nome = $request->input('nome');
         $usuario = $request->input('usuario');
         $email = $request->input('email');
-        $site = $request->input('site');
+        $site = $request->input('site') ?: session('usuario.site');
         $perfil = $request->input('perfil') ?: 'OPERAÇÃO';
         $senha = $request->input('senha');
         $status = 'ATIVADO';
@@ -51,7 +51,7 @@ class UsuariosController extends Controller
         $nome = $request->input('nome');
         $usuario = $request->input('usuario');
         $email = $request->input('email');
-        $site = $request->input('site');
+        $site = $request->input('site') ?: session('usuario.site');
         $perfil = $request->input('perfil') ?: 'OPERAÇÃO';
 
         Usuario::where('id', $id)->update([
@@ -60,6 +60,23 @@ class UsuariosController extends Controller
             'email' => trim(mb_strtoupper($email)),
             'site' => trim(mb_strtoupper($site)),
             'perfil' => trim(mb_strtoupper($perfil))
+        ]);
+
+        $usuario = Usuario::where('id', session('usuario.id'))->first();
+
+        session()->forget('usuario');
+        session()->regenerate();
+
+        session([
+            'usuario' => [
+                'id' => $usuario->id,
+                'nome' => $usuario->nome,
+                'usuario' => $usuario->usuario,
+                'email' => $usuario->email,
+                'site' => $usuario->site,
+                'perfil' => $usuario->perfil,
+                'status' => $usuario->status
+            ]
         ]);
 
         return redirect(route("create-usuario"))->with('alertSuccess', 'Usuário editado com sucesso.');

@@ -1,7 +1,6 @@
 @extends('layouts.content')
 
 @section('content')
-    @include('layouts.menu-lateral')
     <section class="centro">
         <header class="cabecalho">
             <h1 class="cabecalho-title"><a href="{{ route('homepage') }}">Homepage</a> / <a href="{{ route('cadastros') }}">Cadastros</a> / Colaboradores temporários</h1>
@@ -94,8 +93,8 @@
                             <th>Nome</th>
                             <th>Matrícula</th>
                             <th>Site</th>
-                            <th>Desativa em</th>
                             <th>Status</th>
+                            <th>Desativa em</th>
                             <th>Cadastrado em</th>
                             <th>Gerenciar</th>
                         </tr>
@@ -106,15 +105,15 @@
                                 <td>{{ $exibe->nome_colaborador }}</td>
                                 <td>{{ $exibe->matricula_colaborador }}</td>
                                 <td>{{ $exibe->site_colaborador }} </td>
-                                <td>{{ Carbon\Carbon::parse($exibe->desativar_em)->format('d/m/Y') }} </td>
                                 <td>
                                     @if($exibe->status === 'ATIVADO')
                                         <p hidden>{{$exibe->status}}</p>
-                                        <i class="fa-solid fa-user-check" id="table-icon-green" title="Ativado"> </i>
+                                        <i class="fa-solid fa-user-check" id="table-icon-green" title="ATIVADO"> </i>
                                     @else
                                         <p hidden>{{$exibe->status}}</p>
-                                        <i class="fa-solid fa-user-xmark" id="table-icon-red" title="Desativado"> </i>
+                                        <i class="fa-solid fa-user-xmark" id="table-icon-red" title="DESATIVADO"> </i>
                                     @endif
+                                <td>{{ Carbon\Carbon::parse($exibe->desativar_em)->format('d/m/Y') }} </td>
                                 </td>
                                 <td>{{ \Carbon\Carbon::parse($exibe->created_at)->format('d/m/Y - H:i') }}</td>
                                 <td>

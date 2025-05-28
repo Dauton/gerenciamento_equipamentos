@@ -1,9 +1,45 @@
+@php
+    use \App\Http\Controllers\ComponentesControllers\SapiensController;
+@endphp
+
 <div id="back-menu"></div>
 <nav class="menu-lateral">
     <div class="usuario-info">
         <i class="fa-solid fa-circle-user"></i>
         <h2>Bem vindo(a)!</h2>
-        <p>{{ session('usuario.nome') }} <br> {{ session('usuario.site') }}</p>
+        <p>{{ session('usuario.nome') }}</p>
+
+        @if (
+                session('usuario.perfil') === 'ADMIN' ||
+                session('usuario.perfil') === 'TI SITES'
+            )
+            <form method="post" action="{{route('alterarSite')}}">
+                @csrf
+                <select name="site" id="site" class="select2">
+                    <option value="{{session('usuario.site')}}">Exibindo {{session('usuario.site')}}</option>
+                    @php
+                        $sites = SapiensController::listaSites()
+                    @endphp
+                    @foreach ($sites as $site)
+                        <option value="{{ $site['usu_nomfil'] }}" {{ old('site') == $site['usu_nomfil'] ? 'selected' : '' }}>{{ $site['usu_nomfil'] }}</option>
+                    @endforeach
+                </select>
+                @error('site')
+                    <p id="input-error">{{ $message }}</p>
+                    <style>
+                        label[for='site'] i {
+                            background: #b90000
+                        }
+                    </style>
+                @enderror
+
+                <button type="submit">Alternar site</button>
+
+            </form>
+        @else
+            <p>{{ session('usuario.site') }}</p>
+        @endif
+
     </div>
     <ul>
         @if (session('usuario.perfil') === 'OPERAÇÃO')

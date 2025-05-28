@@ -1,3 +1,9 @@
+<?php
+    use App\Http\Controllers\ComponentesControllers\DadosCadastrosController;
+
+    DadosCadastrosController::desativaColaboradorOnDate();
+?>
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -16,12 +22,12 @@
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.4.1/css/buttons.dataTables.min.css">
-
 </head>
 
 <body>
     <main class="principal">
         @if (request()->getRequestUri() !== '/')
+            @include('layouts.menu-lateral')
             @include('layouts.cabecalho-mobile')
         @endif
 

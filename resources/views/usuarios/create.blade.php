@@ -1,7 +1,6 @@
 @extends('layouts.content')
 
 @section('content')
-    @include('layouts.menu-lateral')
     <section class="centro">
         <header class="cabecalho">
             <h1 class="cabecalho-title"><a href="{{ route('homepage') }}">Homepage</a> / <a href="{{ route('cadastros') }}">Cadastros</a> / Usuários</h1>
@@ -56,6 +55,7 @@
                         </style>
                     @enderror
                 </label>
+                @if(session('usuario.perfil') === 'ADMIN')
                 <label for="site"><p>Site<span> *</span></p>
                     <div>
                         <i class="fa-solid fa-map-location-dot"></i>
@@ -66,16 +66,15 @@
                             @endforeach
                         </select>
                     </div>
-                    @error('site')
-                        <p id="input-error">{{ $message }}</p>
-                        <style>
-                            label[for='site'] i {
-                                background: #b90000 !important
-                            }
-                        </style>
-                    @enderror
-                </label>
-                @if(session('usuario.perfil') === 'ADMIN')
+                        @if ($errors->has('site'))
+                            <p id="input-error">{{ $errors->first('site') }}</p>
+                            <style>
+                                label[for='site'] i {
+                                    background: #b90000 !important
+                                }
+                            </style>
+                        @endif
+                    </label>
                     <label for="perfil"><p>Perfil<span> *</span></p>
                         <div>
                             <i class="fa-solid fa-user-shield"></i>

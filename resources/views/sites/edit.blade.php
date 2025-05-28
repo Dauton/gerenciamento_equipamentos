@@ -1,7 +1,6 @@
 @extends('layouts.content')
 
 @section('content')
-    @include('layouts.menu-lateral')
     <section class="centro">
         <header class="cabecalho">
             <h1 class="cabecalho-title"><a href="{{ route('homepage') }}">Homepage</a> / <a href="{{ route('cadastros') }}">Cadastros</a> / <a href='{{ route('create-site') }}'>Sites</a> / Ediçao de site</h1></h1>

@@ -1,7 +1,6 @@
 @extends('layouts.content')
 
 @section('content')
-@include('layouts.menu-lateral')
 
 <section class="centro">
     <header class="cabecalho">

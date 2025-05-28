@@ -1,7 +1,6 @@
 @extends('layouts.content')
 
 @section('content')
-@include('layouts.menu-lateral')
 <section class="centro">
     <header class="cabecalho">
         <h1 class="cabecalho-title">Homepage</h1>
@@ -21,7 +20,7 @@
                         <option value="" {{ old('equipamento') ? '' : 'selected' }}>Selecione o equipamento</option>
                         @foreach ($equipamentos as $equipamento)
                             @php
-                                $valor = 'PAT ' . $equipamento->sde_inventory_number . ' - SN ' . $equipamento->sde_serial_number;
+                                $valor = $equipamento->nome_tipo . ' - PAT ' . $equipamento->patrimonio . ' - SN ' . $equipamento->serialnumber;
                             @endphp
                             <option value="{{ $valor }}" {{ old('equipamento') == $valor ? 'selected' : '' }}>
                                 {{ $valor }}
@@ -48,12 +47,22 @@
 
                         <option disabled>Efetivos</option>
                         @foreach ($colaboradores as $colaborador)
-                            <option value="{{ $colaborador['usu_numcad'] . ' - ' . $colaborador['usu_nomfun'] }}" {{ old('colaborador') == $colaborador['usu_numcad'] . ' - ' . $colaborador['usu_nomfun'] ? 'selected' : '' }}>{{ $colaborador['usu_numcad'] . ' - ' . $colaborador['usu_nomfun'] }}</option>
+                            <option
+                                value="{{ $colaborador['usu_numcad'] . ' - ' . $colaborador['usu_nomfun'] }}"
+                                data-turno="{{ $colaborador['usu_dessup'] }}"
+                                data-departamento="{{ $colaborador['usu_secao'] }}"
+                                {{ old('colaborador') == $colaborador['usu_numcad'] . ' - ' . $colaborador['usu_nomfun'] ? 'selected' : '' }}>
+                                {{ $colaborador['usu_numcad'] . ' - ' . $colaborador['usu_nomfun'] }}
+                            </option>
                         @endforeach
 
                         <option disabled>Temporários</option>
                         @foreach ($colaboradores_temporarios as $colaborador)
-                            <option value="{{ $colaborador->matricula_colaborador . ' - ' . $colaborador->nome_colaborador }}" {{ old('colaborador') == $colaborador->matricula_colaborador . ' - ' . $colaborador->nome_colaborador ? 'selected' : '' }}>{{ $colaborador->matricula_colaborador . ' - ' . $colaborador->nome_colaborador }}</option>
+                            <option
+                                value="{{ $colaborador['matricula_colaborador'] . ' - ' . $colaborador['nome_colaborador'] }}"
+                                {{ old('colaborador') == $colaborador['matricula_colaborador'] . ' - ' . $colaborador['nome_colaborador'] ? 'selected' : '' }}>
+                                {{ $colaborador['matricula_colaborador'] . ' - ' . $colaborador['nome_colaborador'] }}
+                            </option>
                         @endforeach
                     </select>
                 </div>
@@ -106,12 +115,7 @@
                 <p>Departamento<span> *</span></p>
                 <div>
                     <i class="fa-solid fa-briefcase"></i>
-                    <select name="departamento" id="departamento" class="select2">
-                        <option value="" {{ old('departamento') ? '' : 'selected' }}>Selecione o departamento</option>
-                        @foreach ($departamentos as $departamento)
-                        <option value="{{ $departamento->departamento }}" {{ old('departamento') == $departamento->departamento ? 'selected' : '' }}>{{ $departamento->departamento }}</option>
-                        @endforeach
-                    </select>
+                    <input type="text" name="departamento" id="departamento" placeholder="Departamento">
                 </div>
                 @error('departamento')
                     <p id="input-error">{{ $message }}</p>
@@ -127,12 +131,7 @@
                 <p>Turno<span> *</span></p>
                 <div>
                     <i class="fa-solid fa-business-time"></i>
-                    <select name="turno" id="turno" class="select2">
-                        <option value="" {{ old('turno') ? '' : 'selected' }}>Selecione o turno</option>
-                        @foreach ($turnos as $turno)
-                            <option value="{{ $turno->turno }}" {{ old('turno') == $turno->turno ? 'selected' : '' }}>{{ $turno->turno }}</option>
-                        @endforeach
-                    </select>
+                    <input type="text" name="turno" id="turno" placeholder="Turno">
                 </div>
                 @error('turno')
                     <p id="input-error">{{ $message }}</p>
@@ -146,7 +145,7 @@
 
             <div class="container-buttons">
                 <button type="submit">Entregar</button>
-                <a href="{{ route('homepage')}}"><button type="button" id="btn-cancelar">Cancelar</button></a>
+                <a href="{{ route('homepage')}}"><button type="reset" id="btn-cancelar">Cancelar</button></a>
             </div>
         </form>
 

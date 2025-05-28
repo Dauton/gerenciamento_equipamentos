@@ -1,7 +1,6 @@
 @extends('layouts.content')
 
 @section('content')
-    @include('layouts.menu-lateral')
     <section class="centro">
         <header class="cabecalho">
             <h1 class="cabecalho-title"><a href="{{ route('homepage') }}">Homepage</a> / <a href="{{ route('cadastros') }}">Cadastros</a> / <a href='{{ route('create-avaria') }}'>Avarias</a> / Ediçao de avaria</h1>
@@ -60,6 +59,6 @@
         <a><button type="button" id="float-button" class="float-button-red"><i class="fa-solid fa-trash"></i></button></a>
     </div>
     @section('executa-confirmacao')
-        <a href="/deleteAvaria/{{ Crypt::encrypt($exibir->id) }}"><button type="button" id="btn-red">Excluir</button></a>
+        <a href="{{ route("deleteAvaria", Crypt::encrypt($exibir->id)) }}"><button type="button" id="btn-red">Excluir</button></a>
     @endsection
 @endsection

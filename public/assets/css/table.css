@@ -140,3 +140,6 @@ table #table-icon-red {
     background: #217346 !important;
     color: #fff !important;
 }
+.dt-button:hover {
+    background: #14472b !important;
+}

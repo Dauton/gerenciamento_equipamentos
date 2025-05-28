@@ -57,7 +57,7 @@ class InputValidationsController extends Controller
                 'ha_avaria' => ['required'],
             ],
             [
-                'ha_avaria' => 'Deve ser informado se houve não avaria no equipamento.',
+                'ha_avaria' => 'Deve ser informado se houve ou não avaria no equipamento.',
             ]
         );
         if ($request->input('ha_avaria') === 'SIM') {
@@ -103,7 +103,6 @@ class InputValidationsController extends Controller
                 'nome' => ['required'],
                 'usuario' => ['required', 'unique:usuarios,usuario'],
                 'email' => ['required', 'email'],
-                'site' => ['required'],
                 'senha' => ['required', 'min: 12', 'regex: /[a-z]/', 'regex: /[A-Z]/', 'regex: /[0-9]/', 'regex: /[!@#$%^&*(),.?":{}|<>]/'],
                 'repete_senha' => ['required', 'same:senha']
             ],
@@ -113,7 +112,6 @@ class InputValidationsController extends Controller
                 'usuario.unique' => 'O usuário informado já está cadastrado.',
                 'email.required' => 'O e-mail deve ser informado.',
                 'email.email' => 'O e-mail informado não é válido.',
-                'site.required' => 'O site deve ser informado.',
                 'senha.required' => 'A senha deve ser informada.',
                 'senha.min' => 'A senha deve possuir pelo menos :min caracteres',
                 'senha.regex' => 'A senha deve possuir pelo menos uma letra maiúscula, uma letra minuscula, um número e um caractere especial.',
@@ -122,19 +120,20 @@ class InputValidationsController extends Controller
             ]
         );
 
-        // VALIDA O CAMPO DE PERFIL APENAS SE O USUÁRIO LOGADO FOR UM ADMIN
+        // VALIDA OS CAMPOS 'PERFIL' E 'SITE' APENAS SE O USUÁRIO LOGADO FOR UM ADMIN
         if (session('usuario.perfil') === 'ADMIN') {
             $request->validate(
                 [
                     'perfil' => ['required'],
+                    'site' => ['required']
                 ],
                 [
                     'perfil.required' => 'O perfil deve ser informado.',
+                    'site.required' => 'O site deve ser informado.',
                 ]
             );
         }
     }
-
 
     // CREATE SITE VALIDATIONS
     public static function validationsSite(Request $request)
@@ -273,15 +272,13 @@ class InputValidationsController extends Controller
             [
                 'nome' => ['required'],
                 'usuario' => ['required'],
-                'email' => ['required', 'email'],
-                'site' => ['required'],
+                'email' => ['required', 'email']
             ],
             [
                 'nome.required' => 'O nome deve ser informado.',
                 'usuario.required' => 'O usuário deve ser informado.',
                 'email.required' => 'O e-mail deve ser informado.',
-                'email.email' => 'O e-mail informado não é válido.',
-                'site.required' => 'O site deve ser informado.',
+                'email.email' => 'O e-mail informado não é válido.'
             ]
 
         );
@@ -293,18 +290,20 @@ class InputValidationsController extends Controller
                 ],
                 [
                     'usuario.unique' => 'O usuário informado já está cadastrado.'
-                ]
+                ],
             );
         }
 
-        // VALIDA O CAMPO DE PERFIL APENAS SE O USUÁRIO LOGADO FOR UM ADMIN
+        // VALIDA OS CAMPOS 'PERFIL E SITE' APENAS SE O USUÁRIO LOGADO FOR UM ADMIN
         if (session('usuario.perfil') === 'ADMIN') {
             $request->validate(
                 [
-                    'perfil' => ['required']
+                    'perfil' => ['required'],
+                    'site' => ['required']
                 ],
                 [
-                    'perfil.required' => 'O perfil deve ser informado.'
+                    'perfil.required' => 'O perfil deve ser informado.',
+                    'site.required' => 'O site deve ser informado.'
                 ]
             );
         }
@@ -482,5 +481,18 @@ class InputValidationsController extends Controller
                 ]
             );
         }
+    }
+
+    // ALTERAÇÃO DE SITE VALIDATIONS
+    public static function validationsAlterarSite(Request $request)
+    {
+        $request->validate(
+            [
+                'site' => ['required']
+            ],
+            [
+                'site.required' => 'Informe o site'
+            ]
+        );
     }
 }

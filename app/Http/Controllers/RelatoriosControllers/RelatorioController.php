@@ -100,10 +100,13 @@ class RelatorioController extends Controller
         if ($equipamento) {
             $query->where('equipamento', $equipamento);
         }
+        if(!$data_inicio && !$data_final && !$site && !$equipamento) {
+            $query->where('site', session('usuario.site'));
+        }
 
         $relatorios = $query->orderBy('data_devolucao')->get();
         $sites = SapiensController::listaSites();
-        $equipamentos = Equipamento::select('sde_inventory_number', 'sde_serial_number')->orderBy('sde_inventory_number', 'asc')->get();
+        $equipamentos = Equipamento::listaEquipamentos();
 
         if(count($relatorios) < 1) {
             return view('relatorios/temporarias',[
