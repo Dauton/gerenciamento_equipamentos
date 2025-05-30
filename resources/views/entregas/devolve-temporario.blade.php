@@ -14,6 +14,44 @@
 
             <h1>Devolução de equipamento</h1>
 
+            <label for="colaborador_devolucao">
+                <p>Colaborador<span> *</span></p>
+                <div>
+                    <i class="fa-solid fa-user-tag"></i>
+                    <select name="colaborador_devolucao" id="colaborador_devolucao" class="select2">
+                        <option value="" {{ old('colaborador_devolucao') ? '' : 'selected' }}>Selecione o colaborador</option>
+
+                        <option disabled>Efetivos</option>
+                        @foreach ($colaboradores as $colaborador)
+                            <option
+                                value="{{ $colaborador['usu_numcad'] . ' - ' . $colaborador['usu_nomfun'] }}"
+                                data-turno="{{ $colaborador['usu_dessup'] }}"
+                                data-departamento="{{ $colaborador['usu_secao'] }}"
+                                {{ old('colaborador') == $colaborador['usu_numcad'] . ' - ' . $colaborador['usu_nomfun'] ? 'selected' : '' }}>
+                                {{ $colaborador['usu_numcad'] . ' - ' . $colaborador['usu_nomfun'] }}
+                            </option>
+                        @endforeach
+
+                        <option disabled>Temporários</option>
+                        @foreach ($colaboradores_temporarios as $colaborador)
+                            <option
+                                value="{{ $colaborador['matricula_colaborador'] . ' - ' . $colaborador['nome_colaborador'] }}"
+                                {{ old('colaborador') == $colaborador['matricula_colaborador'] . ' - ' . $colaborador['nome_colaborador'] ? 'selected' : '' }}>
+                                {{ $colaborador['matricula_colaborador'] . ' - ' . $colaborador['nome_colaborador'] }}
+                            </option>
+                        @endforeach
+                    </select>
+                </div>
+                @error('colaborador_devolucao')
+                    <p id="input-error">{{ $message }}</p>
+                    <style>
+                        label[for='colaborador_devolucao'] i {
+                            background: #b90000
+                        }
+                    </style>
+                @enderror
+            </label>
+
             <label for="ha_avaria">
                 <p>O equipamento está avariado?<span> *</span></p>
                 <div>

@@ -153,10 +153,6 @@
                         <th>Para o colaborador</th>
                         <th>Departamento</th>
                         <th>Turno</th>
-                        <th>Devolvido por</th>
-                        <th>Devolvido em</th>
-                        <th>Avaria</th>
-                        <th>Foto avaria</th>
                         <th>Termo de respons.</th>
                         <th>Devolução</th>
                     </tr>
@@ -171,16 +167,6 @@
                         <td>{{$exibe->colaborador}}</td>
                         <td>{{$exibe->departamento}}</td>
                         <td>{{$exibe->turno}}</td>
-                        <td>{{$exibe->agente_devolucao}}</td>
-                        <td>{{$exibe->data_devolucao ? \Carbon\Carbon::parse($exibe->data_devolucao)->format('d/m/Y - H:i') : ''}} </td>
-                        <td>{{$exibe->avaria}}</td>
-                        <td>
-                            @if (!empty($exibe->foto_avaria))
-                            <a href="{{ $exibe->foto_avaria }}" target="_blank" title="Clique para abrir a foto">
-                                <i class="fa-solid fa-image" id="btn-table-blue"></i>
-                            </a>
-                            @endif
-                        </td>
                         <td>
                             @if(!empty($exibe->termo_responsabilidade))
                             <a href="{{$exibe->termo_responsabilidade}}" download>

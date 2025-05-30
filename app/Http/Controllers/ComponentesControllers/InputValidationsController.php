@@ -54,9 +54,11 @@ class InputValidationsController extends Controller
     {
         $request->validate(
             [
+                'colaborador_devolucao' => ['required'],
                 'ha_avaria' => ['required'],
             ],
             [
+                'colaborador_devolucao.required' => 'O colaborador que utilizou o equipamento deve ser informado.',
                 'ha_avaria' => 'Deve ser informado se houve ou não avaria no equipamento.',
             ]
         );

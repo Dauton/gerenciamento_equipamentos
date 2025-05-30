@@ -106,8 +106,9 @@
                                 <th>Para o colaborador</th>
                                 <th>Departamento</th>
                                 <th>Turno</th>
-                                <th>Devolvido por</th>
+                                <th>Confirmou devolução</th>
                                 <th>Devolvido em</th>
+                                <th>Pelo colaborador</th>
                                 <th>Avaria</th>
                                 <th>Foto avaria</th>
                                 <th>Termo de respons.</th>
@@ -136,6 +137,7 @@
                                     <td>{{ $exibe->agente_devolucao }}</td>
                                     <td>{{ $exibe->data_devolucao ? \Carbon\Carbon::parse($exibe->data_devolucao)->format('d/m/Y - H:i') : '' }}
                                     </td>
+                                    <td>{{ $exibe->colaborador_devolucao }}</td>
                                     <td>{{ $exibe->avaria }}</td>
                                     <td>
                                         @if (!empty($exibe->foto_avaria))
@@ -158,7 +160,7 @@
                                     </td>
                                     <td>
                                         @if (empty($exibe->data_devolucao))
-                                            <a href="{{ route("relatorios-permanentes", Crypt::encrypt($exibe->id)) }}"><i
+                                            <a href="{{ route("devolve-permanente", Crypt::encrypt($exibe->id)) }}"><i
                                                     class="fa-solid fa-circle-down" id="btn-table-blue"></i></a>
                                         @else
                                             Já devolvido

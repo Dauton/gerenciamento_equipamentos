@@ -50,6 +50,7 @@ class RelatorioController extends Controller
         InputValidationsController::validationsDevolveEquipamento($request);
 
         $agente_devolucao = session('usuario.nome');
+        $colaborador_devolucao = $request->input('colaborador_devolucao');
         $avaria = $request->input('avaria');
 
         // LÓGICA DA FOTO DA AVARIA
@@ -71,6 +72,7 @@ class RelatorioController extends Controller
         Relatorio::where('id', $id)->update([
             'agente_devolucao' => $agente_devolucao,
             'data_devolucao' => now(),
+            'colaborador_devolucao' => $colaborador_devolucao,
             'avaria' => $avaria,
             'foto_avaria' => $arquivo_gravado
         ]);

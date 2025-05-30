@@ -118,7 +118,8 @@
                                 <th>Turno</th>
                                 <th>Confirmou devolução</th>
                                 <th>Devolvido em</th>
-                                <th>Houve avaria?</th>
+                                <th>Pelo colaborador</th>
+                                <th>Avaria</th>
                                 <th>Foto da avaria</th>
                             </tr>
                         </thead>
@@ -144,6 +145,7 @@
                                     <td>{{ $exibe->turno }}</td>
                                     <td>{{ $exibe->agente_devolucao }}</td>
                                     <td>{{ $exibe->data_devolucao ? \Carbon\Carbon::parse($exibe->data_devolucao)->format('d/m/Y - H:i') : '' }}</td>
+                                    <td>{{ $exibe->colaborador_devolucao }}</td>
                                     <td>{{ $exibe->avaria }}</td>
                                     <td>
                                         @if (!empty($exibe->foto_avaria))

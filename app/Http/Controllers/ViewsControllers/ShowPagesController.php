@@ -5,6 +5,7 @@ namespace App\Http\Controllers\ViewsControllers;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\ComponentesControllers\SapiensController;
 use App\Http\Controllers\ComponentesControllers\DadosCadastrosController;
+use App\Http\Controllers\CRUDControllers\ColaboradoresController;
 use App\Models\Avaria;
 use App\Models\Colaborador;
 use App\Models\Departamento;
@@ -52,6 +53,8 @@ class ShowPagesController extends Controller
 
         $idRelatorio = Relatorio::where('id', $id)->first();
         $exibir = Relatorio::all()->where('id', $id);
+        $colaboradores = SapiensController::listaColaboradores();
+        $colaboradores_temporarios = Colaborador::where('site_colaborador', session('usuario.site'))->where('status', 'ATIVADO')->get();
         $avarias = Avaria::orderBy('tipo_avaria')->get();
 
         // CASO HAJA A TENTATIVA DE ACESSAR UM RELATÓRIO JÁ CONCLUÍDO
@@ -59,7 +62,7 @@ class ShowPagesController extends Controller
             return redirect()->back()->with('alertError', 'Esse equipamento já foi devolvido.');
         }
 
-        return view('entregas/devolve-temporario', compact('idRelatorio', 'exibir', 'avarias'));
+        return view('entregas/devolve-temporario', compact('idRelatorio', 'exibir', 'colaboradores', 'colaboradores_temporarios', 'avarias'));
     }
 
     // RELATORIOS PAGE
@@ -97,6 +100,8 @@ class ShowPagesController extends Controller
 
         $idRelatorio = RelatorioPermanente::where('id', $id)->first();
         $exibir = RelatorioPermanente::all()->where('id', $id);
+        $colaboradores = SapiensController::listaColaboradores();
+        $colaboradores_temporarios = Colaborador::where('site_colaborador', session('usuario.site'))->where('status', 'ATIVADO')->get();
         $avarias = Avaria::orderBy('tipo_avaria')->get();
 
         // CASO HAJA A TENTATIVA DE ACESSAR UM EQUIPAMENTO JÁ DEVOLVIDO
@@ -104,7 +109,7 @@ class ShowPagesController extends Controller
             return redirect()->back()->with('alertError', 'Esse equipamento já foi devolvido.');
         }
 
-        return view('entregas/devolve-permanente', compact('idRelatorio', 'exibir', 'avarias'));
+        return view('entregas/devolve-permanente', compact('idRelatorio', 'exibir', 'colaboradores', 'colaboradores_temporarios', 'avarias'));
     }
 
     // RELATORIOS DE ENTREGAS PERMANENTES PAGE
